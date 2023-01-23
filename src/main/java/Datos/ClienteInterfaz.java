@@ -13,11 +13,20 @@ import java.util.List;
  * @author Alumno Mañana
  */
 public interface ClienteInterfaz {
+
     public List<Cliente> findAllClientes();
+
     public Cliente findClienteByID(Cliente cliente);
+
     public Cliente findClienteByEmail(Cliente cliente);
-    public Cliente findClienteByNombre(Cliente cliente);
+
+    public List<Cliente> findClienteByNombre(Cliente cliente);
+
+    public List<Cliente> findClienteByApellido(Cliente cliente);
+
     public void insertCliente(Cliente cliente);
+
     public void updateCliente(Cliente cliente);
+
     public void deleteCliente(Cliente cliente);
 }

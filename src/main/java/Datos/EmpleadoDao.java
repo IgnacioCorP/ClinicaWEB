@@ -18,18 +18,16 @@ import javax.persistence.Query;
  * @author Alumno Mañana
  */
 @Stateless
-public class EmpleadoDao implements EmpleadoInterfaz{
-     // El EJB se encarga de forma automática de hacer las transacciones.
-    
+public class EmpleadoDao implements EmpleadoInterfaz {
+    // El EJB se encarga de forma automática de hacer las transacciones.
+
     // Ahora inyectamos la unidad de persistencia a través del API de JPA
     // Simplemente tenemos que usar la anotación e indicar el nombre de nuestra
     // unidad de persistencia
-    @PersistenceContext(unitName="com.mycompany_ClinicaWeb_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "com.mycompany_ClinicaWeb_war_1.0-SNAPSHOTPU")
     EntityManager em;
-    
-    // Con este objeto de em ya podemos interactuar con nuestra BD
-    
 
+    // Con este objeto de em ya podemos interactuar con nuestra BD
     @Override
     public List<Empleado> findAllEmpleados() {
         // Creamos un NamedQuery, y el listado lo leemos con getResultList
@@ -43,6 +41,8 @@ public class EmpleadoDao implements EmpleadoInterfaz{
         // que queremos buscar
         return em.find(Empleado.class, empleado.getEmpleadoPK());
     }
+
+    
 
     @Override
     public Empleado findEmpleadoByEmail(Empleado empleado) {
@@ -61,11 +61,11 @@ public class EmpleadoDao implements EmpleadoInterfaz{
     }
 
     @Override
-    public void updateEmpleado(Empleado empleado){
+    public void updateEmpleado(Empleado empleado) {
         // Sincroniza cualquier modificamos que hayamos hecho de la persona en la BD
         em.merge(empleado);
     }
-    
+
     @Override
     public void deleteEmpleado(Empleado empleado) {
         // 1. actualizamos el estado del objeto en la base de datos => se borra.

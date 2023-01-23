@@ -20,7 +20,9 @@ public interface ClienteNegocioInterfaz {
 
     public Cliente encontrarClientePorID(Cliente cliente);
 
-    public Cliente encontrarClientePorNombre(Cliente cliente);
+    public List<Cliente> listarClientesPorNombre(Cliente cliente);
+
+    public List<Cliente> listarClientesPorApellido(Cliente cliente);
 
     public Cliente econtrarClientePorEmail(Cliente cliente);
 

@@ -55,15 +55,28 @@ public class ClienteDao implements ClienteInterfaz{
     }
     
     @Override
-    public Cliente findClienteByNombre(Cliente cliente) {
+    public List<Cliente> findClienteByNombre(Cliente cliente) {
         // En este caso no vamos a usar un NamedQuery, que podríamos haber 
         // agregado en la Entidad de Persona sino que vamos a incluirlo directamente.
-        Query query = em.createQuery("from Cliente p where p.Nombre = :Nombre");
+        Query query = em.createQuery("Cliente.findByNombre");
         query.setParameter("Nombre", cliente.getNombre());
         // Y ahroa sólo esperamos un resultado, porque el email debe de ser único
         // sino lo hemos definido así lo modificamos en nuestra tabla como unique
-        return (Cliente) query.getSingleResult();
+        return query.getResultList();
     }
+    
+    @Override
+    public List<Cliente> findClienteByApellido(Cliente cliente) {
+        // En este caso no vamos a usar un NamedQuery, que podríamos haber 
+        // agregado en la Entidad de Persona sino que vamos a incluirlo directamente.
+        Query query = em.createQuery("Cliente.findByApellido");
+        query.setParameter("Apellido", cliente.getApellido());
+        // Y ahroa sólo esperamos un resultado, porque el email debe de ser único
+        // sino lo hemos definido así lo modificamos en nuestra tabla como unique
+        return query.getResultList();
+    }
+    
+  
 
     @Override
     public void insertCliente(Cliente cliente) {
