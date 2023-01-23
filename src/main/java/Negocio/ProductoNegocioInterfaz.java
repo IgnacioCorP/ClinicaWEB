@@ -14,7 +14,7 @@ import javax.ejb.Local;
  * @author Alumno Mañana
  */
 @Local
-interface ProductoNegocioInterfaz {
+public interface ProductoNegocioInterfaz {
 
     public List<Producto> listarProductos();
 

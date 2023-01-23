@@ -31,12 +31,19 @@ public class ClienteService implements ClienteNegocioInterfaz{
     public Cliente encontrarClientePorID(Cliente cliente) {
         return clienteInterfaz.findClienteByID(cliente);
     }
-
+    
+    @Override
+    public Cliente encontrarClientePorNombre(Cliente cliente) {
+        return clienteInterfaz.findClienteByNombre(cliente);
+    }
+    
+  
     @Override
     public Cliente econtrarClientePorEmail(Cliente cliente) {
         return clienteInterfaz.findClienteByEmail(cliente);
     }
 
+    
     @Override
     public void registrarCliente(Cliente cliente) {
         clienteInterfaz.insertCliente(cliente);

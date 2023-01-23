@@ -14,11 +14,13 @@ import javax.ejb.Local;
  * @author Alumno Mañana
  */
 @Local
-interface ClienteNegocioInterfaz {
+public interface ClienteNegocioInterfaz {
 
     public List<Cliente> listarClientes();
 
     public Cliente encontrarClientePorID(Cliente cliente);
+
+    public Cliente encontrarClientePorNombre(Cliente cliente);
 
     public Cliente econtrarClientePorEmail(Cliente cliente);
 

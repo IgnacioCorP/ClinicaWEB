@@ -24,6 +24,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,6 +33,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "empleado")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e"),
     @NamedQuery(name = "Empleado.findByNif", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.nif = :nif"),
@@ -42,7 +45,8 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Empleado.findByFechaNac", query = "SELECT e FROM Empleado e WHERE e.fechaNac = :fechaNac"),
     @NamedQuery(name = "Empleado.findByLaboratorioIDlab", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.laboratorioIDlab = :laboratorioIDlab"),
     @NamedQuery(name = "Empleado.findByEmpleadoNif", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.empleadoNif = :empleadoNif"),
-    @NamedQuery(name = "Empleado.findByDepartamentoIDdep", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.departamentoIDdep = :departamentoIDdep")})
+    @NamedQuery(name = "Empleado.findByDepartamentoIDdep", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.departamentoIDdep = :departamentoIDdep"),
+    @NamedQuery(name = "Empleado.findByImgE", query = "SELECT e FROM Empleado e WHERE e.imgE = :imgE")})
 public class Empleado implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,6 +78,11 @@ public class Empleado implements Serializable {
     @Lob
     @Column(name = "Clave")
     private byte[] clave;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "imgE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date imgE;
     @JoinColumn(name = "departamento_ID_dep", referencedColumnName = "ID_dep", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Departamento departamento;
@@ -93,10 +102,11 @@ public class Empleado implements Serializable {
         this.empleadoPK = empleadoPK;
     }
 
-    public Empleado(EmpleadoPK empleadoPK, String email, byte[] clave) {
+    public Empleado(EmpleadoPK empleadoPK, String email, byte[] clave, Date imgE) {
         this.empleadoPK = empleadoPK;
         this.email = email;
         this.clave = clave;
+        this.imgE = imgE;
     }
 
     public Empleado(String nif, int laboratorioIDlab, String empleadoNif, int departamentoIDdep) {
@@ -167,6 +177,14 @@ public class Empleado implements Serializable {
         this.clave = clave;
     }
 
+    public Date getImgE() {
+        return imgE;
+    }
+
+    public void setImgE(Date imgE) {
+        this.imgE = imgE;
+    }
+
     public Departamento getDepartamento() {
         return departamento;
     }
@@ -175,6 +193,7 @@ public class Empleado implements Serializable {
         this.departamento = departamento;
     }
 
+    @XmlTransient
     public List<Empleado> getEmpleadoList() {
         return empleadoList;
     }

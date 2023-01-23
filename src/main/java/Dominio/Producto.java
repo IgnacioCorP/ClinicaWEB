@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,6 +25,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,6 +34,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "producto")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
     @NamedQuery(name = "Producto.findByIDpro", query = "SELECT p FROM Producto p WHERE p.iDpro = :iDpro"),
@@ -59,6 +63,11 @@ public class Producto implements Serializable {
     @Column(name = "Fecha_caducidad")
     @Temporal(TemporalType.DATE)
     private Date fechacaducidad;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "imgP")
+    private byte[] imgP;
     @ManyToMany(mappedBy = "productoList")
     private List<Laboratorio> laboratorioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
@@ -71,11 +80,12 @@ public class Producto implements Serializable {
         this.iDpro = iDpro;
     }
 
-    public Producto(Integer iDpro, String nombre, double precio, Date fechacaducidad) {
+    public Producto(Integer iDpro, String nombre, double precio, Date fechacaducidad, byte[] imgP) {
         this.iDpro = iDpro;
         this.nombre = nombre;
         this.precio = precio;
         this.fechacaducidad = fechacaducidad;
+        this.imgP = imgP;
     }
 
     public Integer getIDpro() {
@@ -110,6 +120,15 @@ public class Producto implements Serializable {
         this.fechacaducidad = fechacaducidad;
     }
 
+    public byte[] getImgP() {
+        return imgP;
+    }
+
+    public void setImgP(byte[] imgP) {
+        this.imgP = imgP;
+    }
+
+    @XmlTransient
     public List<Laboratorio> getLaboratorioList() {
         return laboratorioList;
     }
@@ -118,6 +137,7 @@ public class Producto implements Serializable {
         this.laboratorioList = laboratorioList;
     }
 
+    @XmlTransient
     public List<ClienteHasProducto> getClienteHasProductoList() {
         return clienteHasProductoList;
     }

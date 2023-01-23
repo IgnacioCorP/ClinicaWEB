@@ -23,6 +23,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,6 +32,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "laboratorio")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Laboratorio.findAll", query = "SELECT l FROM Laboratorio l"),
     @NamedQuery(name = "Laboratorio.findByIDlab", query = "SELECT l FROM Laboratorio l WHERE l.iDlab = :iDlab"),
@@ -113,6 +116,7 @@ public class Laboratorio implements Serializable {
         this.telefono = telefono;
     }
 
+    @XmlTransient
     public List<Producto> getProductoList() {
         return productoList;
     }
@@ -121,6 +125,7 @@ public class Laboratorio implements Serializable {
         this.productoList = productoList;
     }
 
+    @XmlTransient
     public List<Empleado> getEmpleadoList() {
         return empleadoList;
     }
