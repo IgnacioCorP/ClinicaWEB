@@ -24,7 +24,7 @@ public class ProductoDao implements ProductoInterfaz{
     // Ahora inyectamos la unidad de persistencia a través del API de JPA
     // Simplemente tenemos que usar la anotación e indicar el nombre de nuestra
     // unidad de persistencia
-    @PersistenceContext(unitName="com.mycompany_ClinicaWeb_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName="ClinicaWeb")
     EntityManager em;
     
     // Con este objeto de em ya podemos interactuar con nuestra BD
