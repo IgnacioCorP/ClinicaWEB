@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="ClinicaWeb" transaction-type="JTA"> <!--RESOURCE_LOCAL-->
-      <jta-data-source>jdbc/ClinicaWeb</jta-data-source>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <persistence-unit name="ClinicaWebPU" transaction-type="JTA">
+    <jta-data-source>jdbc/ClinicawebDb</jta-data-source>
     <class>Dominio.Departamento</class>
-    <class>Dominio.ClienteHasProducto</class>
     <class>Dominio.Laboratorio</class>
+    <class>Dominio.ClienteHasProducto</class>
     <class>Dominio.Producto</class>
-    <class>Dominio.Cliente</class>
     <class>Dominio.Empleado</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clinicaweb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="1234"/>
-    </properties>
+    <class>Dominio.EmpleadoPK</class>
+    <class>Dominio.Cliente</class>
+    <class>Dominio.ClienteHasProductoPK</class>
   </persistence-unit>
 </persistence>

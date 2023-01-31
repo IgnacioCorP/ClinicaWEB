@@ -67,8 +67,8 @@ public class Laboratorio implements Serializable {
         @JoinColumn(name = "producto_ID_pro", referencedColumnName = "ID_pro")})
     @ManyToMany
     private List<Producto> productoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratorio")
-    private List<Empleado> empleadoList;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratorio")
+    //private List<Empleado> empleadoList;
 
     public Laboratorio() {
     }
@@ -124,15 +124,15 @@ public class Laboratorio implements Serializable {
     public void setProductoList(List<Producto> productoList) {
         this.productoList = productoList;
     }
-
-    @XmlTransient
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
-    }
-
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
-    }
+//
+//    @XmlTransient
+//    public List<Empleado> getEmpleadoList() {
+//        return empleadoList;
+//    }
+//
+//    public void setEmpleadoList(List<Empleado> empleadoList) {
+//        this.empleadoList = empleadoList;
+//    }
 
     @Override
     public int hashCode() {

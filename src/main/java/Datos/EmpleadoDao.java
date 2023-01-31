@@ -24,7 +24,7 @@ public class EmpleadoDao implements EmpleadoInterfaz {
     // Ahora inyectamos la unidad de persistencia a través del API de JPA
     // Simplemente tenemos que usar la anotación e indicar el nombre de nuestra
     // unidad de persistencia
-    @PersistenceContext(unitName = "ClinicaWeb")
+    @PersistenceContext(unitName = "ClinicaWebPU")
     EntityManager em;
 
     // Con este objeto de em ya podemos interactuar con nuestra BD

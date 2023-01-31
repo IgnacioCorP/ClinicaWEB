@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Web</title>
+    <link rel="stylesheet" href="Recursos/Estilos.css">
+    <script src="Recursos/Funciones.js"></script>
+</head>
+
+<body>
+    <form name="form1" action="registro" method="POST" onsubmit="return validarForm(this)">
+        <table style="widht: 200px" id="enfasis-columna">
+            <caption>FORMULARIO REGISTRO DE DATOS</caption>
+            <tr>
+                <td class="columna">Usuario: (*)</td>
+                <td>
+                    <input class="default" type="text" name="usuario" value="Usuario" onfocus="this.select()" />
+                </td>
+            </tr>
+            <tr>
+                <td class="columna">Contraseña: (*)</td>
+                <td>
+                    <input class="default" type="password" name="clave" placeHolder="Contraseña" onfocus="this.select()" />
+                </td>
+            </tr>
+            <tr>
+                <td class="columna">Tecnologías de internet: (*)</td>
+                <td>
+                    java <input type="checkbox" name="tecnologia" value="java" />
+                    &nbsp;&nbsp;&nbsp;
+                    .Net<input type="checkbox" name="tecnologia" value=".net" />
+                    &nbsp;&nbsp;&nbsp;
+                    php<input type="checkbox" name="tecnologia" value="php" />
+                    &nbsp;&nbsp;&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="columna">Género: (*)</td>
+                <td>
+                    Hombre<input type="radio" name="genero" value="H" />
+                    Mujer<input type="radio" name="genero" value="M" />
+                    Otro<input type="radio" name="genero" value="O" />
+                </td>
+            </tr>
+            <tr>
+                <td class="columna">Profesión: (*)</td>
+                <td>
+                    <select class="default" name="profesion">
+                        <option value="">Seleccionar</option>
+                        <option value="1">Profesor</option>
+                        <option value="2">Ingeniero</option>
+                        <option value="3">Jubilado</option>
+                        <option value="4">Otro</option>
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="columna">Música Favorita:</td>
+                <td>
+                    <select class="default" name="musica">
+                        <option value="">Seleccionar</option>
+                        <option value="1">KPop</option>
+                        <option value="2">JPop</option>
+                        <option value="3">Trap</option>
+                        <option value="4">Otro</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="columna">Comentarios:</td>
+                <td>
+                    <textarea class="default" name="comentario" cols="30" onfocus="this.select()">
+                        Escribe un comentario...
+                    </textarea>
+                </td>
+            </tr>
+            <tr style="text-align: center;">
+                <td>
+                    <input type="reset" value="Limpiar" class="default"/>
+                </td>
+                <td>
+                    <input type="submit" value="Enviar" class="default"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
