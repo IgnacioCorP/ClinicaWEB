@@ -14,6 +14,7 @@ Datos\LaboratorioInterfaz.class
 Dominio\ClienteHasProducto.class
 Datos\ProductoDao.class
 Datos\ProductoInterfaz.class
+Web\ClienteServlet.class
 Datos\ClienteInterfaz.class
 Negocio\ProductoService.class
 Datos\DepartamentoInterfaz.class
