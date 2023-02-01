@@ -30,21 +30,15 @@ public class EmpleadoPK implements Serializable {
     private int laboratorioIDlab;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "empleado_Nif")
-    private String empleadoNif;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "departamento_ID_dep")
     private int departamentoIDdep;
 
     public EmpleadoPK() {
     }
 
-    public EmpleadoPK(String nif, int laboratorioIDlab, String empleadoNif, int departamentoIDdep) {
+    public EmpleadoPK(String nif, int laboratorioIDlab, int departamentoIDdep) {
         this.nif = nif;
         this.laboratorioIDlab = laboratorioIDlab;
-        this.empleadoNif = empleadoNif;
         this.departamentoIDdep = departamentoIDdep;
     }
 
@@ -64,14 +58,6 @@ public class EmpleadoPK implements Serializable {
         this.laboratorioIDlab = laboratorioIDlab;
     }
 
-    public String getEmpleadoNif() {
-        return empleadoNif;
-    }
-
-    public void setEmpleadoNif(String empleadoNif) {
-        this.empleadoNif = empleadoNif;
-    }
-
     public int getDepartamentoIDdep() {
         return departamentoIDdep;
     }
@@ -85,7 +71,6 @@ public class EmpleadoPK implements Serializable {
         int hash = 0;
         hash += (nif != null ? nif.hashCode() : 0);
         hash += (int) laboratorioIDlab;
-        hash += (empleadoNif != null ? empleadoNif.hashCode() : 0);
         hash += (int) departamentoIDdep;
         return hash;
     }
@@ -103,9 +88,6 @@ public class EmpleadoPK implements Serializable {
         if (this.laboratorioIDlab != other.laboratorioIDlab) {
             return false;
         }
-        if ((this.empleadoNif == null && other.empleadoNif != null) || (this.empleadoNif != null && !this.empleadoNif.equals(other.empleadoNif))) {
-            return false;
-        }
         if (this.departamentoIDdep != other.departamentoIDdep) {
             return false;
         }
@@ -114,7 +96,7 @@ public class EmpleadoPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Dominio.EmpleadoPK[ nif=" + nif + ", laboratorioIDlab=" + laboratorioIDlab + ", empleadoNif=" + empleadoNif + ", departamentoIDdep=" + departamentoIDdep + " ]";
+        return "Dominio.EmpleadoPK[ nif=" + nif + ", laboratorioIDlab=" + laboratorioIDlab + ", departamentoIDdep=" + departamentoIDdep + " ]";
     }
     
 }

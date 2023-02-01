@@ -25,8 +25,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,7 +32,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "producto")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
     @NamedQuery(name = "Producto.findByIDpro", query = "SELECT p FROM Producto p WHERE p.iDpro = :iDpro"),
@@ -71,7 +68,7 @@ public class Producto implements Serializable {
     @ManyToMany(mappedBy = "productoList")
     private List<Laboratorio> laboratorioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
-    private List<ClienteHasProducto> clienteHasProductoList;
+    private List<Compra> compraList;
 
     public Producto() {
     }
@@ -128,7 +125,6 @@ public class Producto implements Serializable {
         this.imgP = imgP;
     }
 
-    @XmlTransient
     public List<Laboratorio> getLaboratorioList() {
         return laboratorioList;
     }
@@ -137,13 +133,12 @@ public class Producto implements Serializable {
         this.laboratorioList = laboratorioList;
     }
 
-    @XmlTransient
-    public List<ClienteHasProducto> getClienteHasProductoList() {
-        return clienteHasProductoList;
+    public List<Compra> getCompraList() {
+        return compraList;
     }
 
-    public void setClienteHasProductoList(List<ClienteHasProducto> clienteHasProductoList) {
-        this.clienteHasProductoList = clienteHasProductoList;
+    public void setCompraList(List<Compra> compraList) {
+        this.compraList = compraList;
     }
 
     @Override

@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13-dic-2022, 9:14:06
+    Author     : Alumno Mañana
+*/
+
+body, .default{
+    line-height: 1.6em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+    font-size: 12px;
+    color: #669;
+}
+
+#enfasis-columna{
+    margin: 45px;
+    width: 480px;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+#enfasis-columna captiopn{
+    font-size: 20px;
+}
+
+#enfasis-columna th{
+    font-size:14px;
+    font-weight: normal;
+    padding: 12px 15px;
+    color: #039;
+}
+
+#enfasis-columna td{
+    padding: 10px 15px;
+    color: #669;
+    border-top: 1px solid #e8edff;
+}
+
+#columna{
+    background: #d0dafd;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+#enfasis-columna tr:hover td{
+    color: #339;
+    background: #eff2ff
+}

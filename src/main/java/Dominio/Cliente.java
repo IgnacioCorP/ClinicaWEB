@@ -22,8 +22,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,7 +29,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "cliente")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
     @NamedQuery(name = "Cliente.findByNif", query = "SELECT c FROM Cliente c WHERE c.nif = :nif"),
@@ -71,7 +68,7 @@ public class Cliente implements Serializable {
     @Column(name = "Clave")
     private byte[] clave;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
-    private List<ClienteHasProducto> clienteHasProductoList;
+    private List<Compra> compraList;
 
     public Cliente() {
     }
@@ -141,13 +138,12 @@ public class Cliente implements Serializable {
         this.clave = clave;
     }
 
-    @XmlTransient
-    public List<ClienteHasProducto> getClienteHasProductoList() {
-        return clienteHasProductoList;
+    public List<Compra> getCompraList() {
+        return compraList;
     }
 
-    public void setClienteHasProductoList(List<ClienteHasProducto> clienteHasProductoList) {
-        this.clienteHasProductoList = clienteHasProductoList;
+    public void setCompraList(List<Compra> compraList) {
+        this.compraList = compraList;
     }
 
     @Override

@@ -4,10 +4,10 @@ C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negoc
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\ClienteDao.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Web\ClienteServlet.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\EmpleadoInterfaz.java
-C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\ClienteHasProducto.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\DepartamentoInterfaz.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negocio\LaboratorioNegocioInterfaz.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\ProductoInterfaz.java
+C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\CompraPK.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\Departamento.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\LaboratorioDao.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\Cliente.java
@@ -19,9 +19,9 @@ C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negocio\LaboratorioService.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negocio\ClienteService.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negocio\EmpleadoNegocioInterfaz.java
-C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\ClienteHasProductoPK.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\EmpleadoPK.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negocio\ProductoNegocioInterfaz.java
+C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\Compra.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\Empleado.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\Laboratorio.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\EmpleadoDao.java

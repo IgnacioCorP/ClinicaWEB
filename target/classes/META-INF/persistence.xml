@@ -10,5 +10,6 @@
     <class>Dominio.EmpleadoPK</class>
     <class>Dominio.Cliente</class>
     <class>Dominio.ClienteHasProductoPK</class>
+    <class>Dominio.Compra</class>
   </persistence-unit>
 </persistence>

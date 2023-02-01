@@ -1,16 +1,13 @@
-/////*
-// * To change this license header, choose License Headers in Project Properties.
-// * To change this template file, choose Tools | Templates
-// * and open the template in the editor.
-// *
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Dominio;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -19,14 +16,11 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,7 +28,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "empleado")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e"),
     @NamedQuery(name = "Empleado.findByNif", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.nif = :nif"),
@@ -45,7 +38,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Empleado.findByEmail", query = "SELECT e FROM Empleado e WHERE e.email = :email"),
     @NamedQuery(name = "Empleado.findByFechaNac", query = "SELECT e FROM Empleado e WHERE e.fechaNac = :fechaNac"),
     @NamedQuery(name = "Empleado.findByLaboratorioIDlab", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.laboratorioIDlab = :laboratorioIDlab"),
-    @NamedQuery(name = "Empleado.findByEmpleadoNif", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.empleadoNif = :empleadoNif"),
     @NamedQuery(name = "Empleado.findByDepartamentoIDdep", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.departamentoIDdep = :departamentoIDdep"),
     @NamedQuery(name = "Empleado.findByImgE", query = "SELECT e FROM Empleado e WHERE e.imgE = :imgE")})
 public class Empleado implements Serializable {
@@ -65,7 +57,7 @@ public class Empleado implements Serializable {
     @Size(max = 70)
     @Column(name = "Direccion")
     private String direccion;
-    //@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 70)
@@ -87,11 +79,6 @@ public class Empleado implements Serializable {
     @JoinColumn(name = "departamento_ID_dep", referencedColumnName = "ID_dep", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Departamento departamento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleado")
-    private List<Empleado> empleadoList;
-    @JoinColumn(name = "empleado_Nif", referencedColumnName = "Nif", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Empleado empleado;
     @JoinColumn(name = "laboratorio_ID_lab", referencedColumnName = "ID_lab", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Laboratorio laboratorio;
@@ -110,8 +97,8 @@ public class Empleado implements Serializable {
         this.imgE = imgE;
     }
 
-    public Empleado(String nif, int laboratorioIDlab, String empleadoNif, int departamentoIDdep) {
-        this.empleadoPK = new EmpleadoPK(nif, laboratorioIDlab, empleadoNif, departamentoIDdep);
+    public Empleado(String nif, int laboratorioIDlab, int departamentoIDdep) {
+        this.empleadoPK = new EmpleadoPK(nif, laboratorioIDlab, departamentoIDdep);
     }
 
     public EmpleadoPK getEmpleadoPK() {
@@ -192,23 +179,6 @@ public class Empleado implements Serializable {
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
-    }
-
-    @XmlTransient
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
-    }
-
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
-    }
-
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
     }
 
     public Laboratorio getLaboratorio() {

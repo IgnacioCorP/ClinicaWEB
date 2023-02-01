@@ -23,8 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,7 +30,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "laboratorio")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Laboratorio.findAll", query = "SELECT l FROM Laboratorio l"),
     @NamedQuery(name = "Laboratorio.findByIDlab", query = "SELECT l FROM Laboratorio l WHERE l.iDlab = :iDlab"),
@@ -67,8 +64,8 @@ public class Laboratorio implements Serializable {
         @JoinColumn(name = "producto_ID_pro", referencedColumnName = "ID_pro")})
     @ManyToMany
     private List<Producto> productoList;
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratorio")
-    //private List<Empleado> empleadoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratorio")
+    private List<Empleado> empleadoList;
 
     public Laboratorio() {
     }
@@ -116,7 +113,6 @@ public class Laboratorio implements Serializable {
         this.telefono = telefono;
     }
 
-    @XmlTransient
     public List<Producto> getProductoList() {
         return productoList;
     }
@@ -124,15 +120,14 @@ public class Laboratorio implements Serializable {
     public void setProductoList(List<Producto> productoList) {
         this.productoList = productoList;
     }
-//
-//    @XmlTransient
-//    public List<Empleado> getEmpleadoList() {
-//        return empleadoList;
-//    }
-//
-//    public void setEmpleadoList(List<Empleado> empleadoList) {
-//        this.empleadoList = empleadoList;
-//    }
+
+    public List<Empleado> getEmpleadoList() {
+        return empleadoList;
+    }
+
+    public void setEmpleadoList(List<Empleado> empleadoList) {
+        this.empleadoList = empleadoList;
+    }
 
     @Override
     public int hashCode() {

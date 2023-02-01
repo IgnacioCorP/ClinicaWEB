@@ -1,9 +1,9 @@
 Datos\EmpleadoInterfaz.class
 Negocio\ClienteNegocioInterfaz.class
 Dominio\Departamento.class
-Dominio\ClienteHasProductoPK.class
 Dominio\Laboratorio.class
 Datos\DepartamentoDao.class
+Dominio\CompraPK.class
 Negocio\DepartamentoService.class
 Datos\ClienteDao.class
 Negocio\EmpleadoNegocioInterfaz.class
@@ -11,11 +11,11 @@ Datos\LaboratorioDao.class
 Dominio\EmpleadoPK.class
 Datos\EmpleadoDao.class
 Datos\LaboratorioInterfaz.class
-Dominio\ClienteHasProducto.class
 Datos\ProductoDao.class
 Datos\ProductoInterfaz.class
 Web\ClienteServlet.class
 Datos\ClienteInterfaz.class
+Dominio\Compra.class
 Negocio\ProductoService.class
 Datos\DepartamentoInterfaz.class
 Negocio\EmpleadoService.class
