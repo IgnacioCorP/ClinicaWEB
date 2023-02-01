@@ -18,34 +18,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author Alumno Mañana
  */
 @WebServlet("/clientes")
-public class ClienteServlet extends HttpServlet{
-    
+public class ClienteServlet extends HttpServlet {
+
     // Ahora hacemos la inyección del componente EJB local al servlet
     @Inject
     // Ahora definimos nuestra variable
     ClienteNegocioInterfaz clienteNegocioInterfaz; // Cremos una instancia de nuestra if local
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse respose)
-    throws ServletException, IOException {
-        
-        /** Ahora este método va acceder al listado de usuarios por medio
-         * de la instancia que estamos recibiendo el EJB         
+            throws ServletException, IOException {
+
+        /**
+         * Ahora este método va acceder al listado de usuarios por medio de la
+         * instancia que estamos recibiendo el EJB
          */
         List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
         System.out.println("clientes: " + clientes);
-        
+
         // Ponemos usuarios en un alcance
         request.setAttribute("clientes", clientes);
-        
+
         // Redirigimos al JSP
-        request.getRequestDispatcher("/listadoClientes.jsp").forward(request, 
+        request.getRequestDispatcher("/listadoClientes.jsp").forward(request,
                 respose);
-    } 
+    }
+
+  
 }

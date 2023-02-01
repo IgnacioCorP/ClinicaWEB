@@ -71,43 +71,40 @@
     </div>
     <!--FIN BARRA DE NAVEGACIÓN-->
      <!--FORMULARIO-->
-    <div class="container-fluid bg-light align-item-center">
-        <!--en esta linea se reparten los elementos-->
-        <div class="row d-flex justify-content-center">
-            <div class="col-sm-12 col-md-4 mt-3 mb-3 text-dark">
-                <form method="" action="">
-                    <h1 style="font-size: 30px; text-align: center;"><strong>REGISTRATE</strong></h1>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Correo</label>
-                        <input type="email" class="form-control" id="correo" placeholder="name@example.com">
-                    </div>
-
-                    <div class="mb-5 pb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fechaNac" placeholder="Fecha de Nacimiento">
-                    </div>
-
-                    <div class="mt-5 col-12 d-flex justify-content-center align-item-center">
-                        <button class="btn btn-outline-success Hadow rounded border" type="submit">REGISTRARSE</button>
-
-                    </div>
-
-                </form>
-            </div>
-
-
+    <div class="container mt-3">
+            <h2>Registro de Cliente</h2>
+            <form action="/ClienteServlet" method="post">
+                <div class="form-group">
+                    <label>NIF</label>
+                    <input type="text" class="form-control" name="nif">
+                </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" class="form-control" name="apellido">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" class="form-control" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" name="fecha">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Enviar">
+            </form>
         </div>
-    </div>
     <script src="lb/js/bootstrap.min.js"></script>
 </body>
 
