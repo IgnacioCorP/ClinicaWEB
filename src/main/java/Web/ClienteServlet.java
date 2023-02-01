@@ -8,6 +8,8 @@ package Web;
 import Dominio.Cliente;
 import Negocio.ClienteNegocioInterfaz;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -45,5 +47,5 @@ public class ClienteServlet extends HttpServlet{
         // Redirigimos al JSP
         request.getRequestDispatcher("/listadoClientes.jsp").forward(request, 
                 respose);
-    }
+    } 
 }
