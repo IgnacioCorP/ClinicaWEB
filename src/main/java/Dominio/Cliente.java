@@ -13,7 +13,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -36,7 +35,8 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Cliente.findByApellido", query = "SELECT c FROM Cliente c WHERE c.apellido = :apellido"),
     @NamedQuery(name = "Cliente.findByTelefono", query = "SELECT c FROM Cliente c WHERE c.telefono = :telefono"),
     @NamedQuery(name = "Cliente.findByEmail", query = "SELECT c FROM Cliente c WHERE c.email = :email"),
-    @NamedQuery(name = "Cliente.findByFechanac", query = "SELECT c FROM Cliente c WHERE c.fechanac = :fechanac")})
+    @NamedQuery(name = "Cliente.findByFechanac", query = "SELECT c FROM Cliente c WHERE c.fechanac = :fechanac"),
+    @NamedQuery(name = "Cliente.findByClave", query = "SELECT c FROM Cliente c WHERE c.clave = :clave")})
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,20 +64,30 @@ public class Cliente implements Serializable {
     private Date fechanac;
     @Basic(optional = false)
     @NotNull
-    @Lob
+    @Size(min = 1, max = 100)
     @Column(name = "Clave")
-    private byte[] clave;
+    private String clave;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<Compra> compraList;
 
     public Cliente() {
     }
 
+    public Cliente(String nif, String nombre, String apellido, String telefono, String email, Date fechanac, String clave) {
+        this.nif = nif;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.email = email;
+        this.fechanac = fechanac;
+        this.clave = clave;
+    }
+    
     public Cliente(String nif) {
         this.nif = nif;
     }
 
-    public Cliente(String nif, byte[] clave) {
+    public Cliente(String nif, String clave) {
         this.nif = nif;
         this.clave = clave;
     }
@@ -130,11 +140,11 @@ public class Cliente implements Serializable {
         this.fechanac = fechanac;
     }
 
-    public byte[] getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(byte[] clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
 

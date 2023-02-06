@@ -40,7 +40,6 @@ public class ClienteServlet extends HttpServlet {
          */
         List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
         System.out.println("clientes: " + clientes);
-
         // Ponemos usuarios en un alcance
         request.setAttribute("clientes", clientes);
 

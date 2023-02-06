@@ -1,4 +1,5 @@
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negocio\ClienteNegocioInterfaz.java
+C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Web\ProductosServlet.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\DepartamentoDao.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negocio\ProductoService.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\ClienteDao.java
@@ -11,6 +12,7 @@ C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Domin
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\Departamento.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\LaboratorioDao.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Dominio\Cliente.java
+C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Web\RegistrarClienteServlet.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\ClienteInterfaz.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Datos\ProductoDao.java
 C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\java\Negocio\EmpleadoService.java

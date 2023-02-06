@@ -10,6 +10,7 @@ Negocio\EmpleadoNegocioInterfaz.class
 Datos\LaboratorioDao.class
 Dominio\EmpleadoPK.class
 Datos\EmpleadoDao.class
+RegistrarClienteServlet.class
 Datos\LaboratorioInterfaz.class
 Datos\ProductoDao.class
 Datos\ProductoInterfaz.class
@@ -17,6 +18,7 @@ Web\ClienteServlet.class
 Datos\ClienteInterfaz.class
 Dominio\Compra.class
 Negocio\ProductoService.class
+Web\ProductosServlet.class
 Datos\DepartamentoInterfaz.class
 Negocio\EmpleadoService.class
 Negocio\ClienteService.class
