@@ -58,6 +58,7 @@ public class RegistrarClienteServlet extends HttpServlet {
             //this.accionDefault(request, response);
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -83,6 +84,13 @@ public class RegistrarClienteServlet extends HttpServlet {
                     // 4. Redigir el flujo desde el controlador a un JSP
                     response.sendRedirect("listadoClientes.jsp");
                     break;
+                case "miCuenta":
+                    Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
+                    clienteNegocioInterfaz.encontrarClientePorID(cliente);
+                    System.out.println("cliente: " + cliente);
+                    request.setAttribute("cliente", cliente);
+                    response.sendRedirect("listarCliente.jsp");
+                    break;
                 default:
                     this.accionDefault(request, response);
             }
@@ -96,10 +104,6 @@ public class RegistrarClienteServlet extends HttpServlet {
 
         // 1. Obtenemos el listado de los cliente
         List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
-        System.out.println("clientes: " + clientes);
-        // Ponemos usuarios en un alcance
-        request.setAttribute("clientes", clientes);
-
         request.getRequestDispatcher("/empleado.jsp").forward(request,
                 response);
 
