@@ -73,13 +73,11 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(String nif, String nombre, String apellido, String telefono, String email, Date fechanac, String clave) {
+    public Cliente(String nif, String nombre, String apellido, String email, String clave) {
         this.nif = nif;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.telefono = telefono;
         this.email = email;
-        this.fechanac = fechanac;
         this.clave = clave;
     }
     

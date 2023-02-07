@@ -27,7 +27,7 @@
             <!--en esta linea se reparten los elementos-->
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-12 col-md-4 d-flex text-dark justify-content-center">
-                    <form method="POST" action="RegistrarClienteServlet">
+                    <form method="POST" action="RegistrarClienteServlet?accion=insertar">
                         <h1 style="font-size: 30px; text-align: center;"><strong>REGISTRATE</strong></h1>
                         <div class="mb-2" style="margin-left: 30px; margin-right: 30px;">
                             <label for="exampleFormControlInput1" class="form-label">Nif</label>
@@ -42,25 +42,19 @@
                             <label for="exampleFormControlInput1" class="form-label">Apellidos</label>
                             <input type="text" class="form-control"  name="Apellido" placeholder="Apellidos">
                         </div>
-                        <div class="mb-2" style="margin-left: 30px; margin-right: 30px;">
-                            <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control"  name="Telefono" placeholder="Teléfono">
-                        </div>
+                        
                         <div class="mb-2" style="margin-left: 30px; margin-right: 30px;">
                             <label for="exampleFormControlInput1" class="form-label">Correo</label>
                             <input type="email" class="form-control"  name="Email" placeholder="name@example.com">
                         </div>
 
-                        <div class="mb-2" style="margin-left: 30px; margin-right: 30px;">
-                            <label for="exampleFormControlInput1" class="form-label">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control"  name="Fecha_nac" placeholder="Fecha de Nacimiento">
-                        </div>
+                    
                         <div class="mb-2" style="margin-left: 30px; margin-right: 30px;">
                             <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
                             <input type="password" class="form-control"  name="Clave" placeholder="Contraseña">
                         </div>
                         <div class="mb-2" style="margin-left: 30px; margin-right: 30px;">
-                            <a href="sesion.html">¿Ya tienes cuenta?</a>
+                            <a href="IniciarSesion.jsp">¿Ya tienes cuenta?</a>
                         </div>
                         <input type="hidden" name="oculto" value="1">
                         <div class="mb-2" style="margin-left: 30px; margin-right: 30px;">

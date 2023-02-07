@@ -14,7 +14,6 @@ RegistrarClienteServlet.class
 Datos\LaboratorioInterfaz.class
 Datos\ProductoDao.class
 Datos\ProductoInterfaz.class
-Web\ClienteServlet.class
 Datos\ClienteInterfaz.class
 Dominio\Compra.class
 Negocio\ProductoService.class

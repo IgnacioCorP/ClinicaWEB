@@ -6,10 +6,53 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listado de Clientes</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="lb/css/bootstrap.min.css">
     </head>
     <body>
-        <div class="container-fluid">
-            <h1>Clientes</h1>
+        <!--BARRA DE NAVEGACIÓN-->
+        <div class="container-fluid ">
+            <nav class="navbar navbar-expand-lg navbar-light " style="background: lightgrey; ">
+                <div class="container-fluid">
+                    <!--ÍCONO APP-->
+                    <a class="navbar-brand" href="empleado.php"><img src="imgP/LOGO.png" class="img-fluid"
+                                                                     style="width: 150px; height: 120px;"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="empleado.jsp">INICIO</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="productosempleado.jsp" id="navbarDropdown" role="button"
+                                   aria-expanded="false">PRODUCTOS</a>
+
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="listadoClientes.jsp" id="navbarDropdown" role="button"
+                                   aria-expanded="false">CLIENTES</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="listarCliente.jsp" id="navbarDropdown" role="button"
+                                   aria-expanded="false">MI CUENTA</a>
+                            </li>
+
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!--FIN BARRA DE NAVEGACIÓN -->
+        <div class="container-fluid col-sm-12 col-md-6">
+
+            <h1 style="justify-content: center; display: flex; color: blue; padding-top: 100px">CLIENTES</h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -17,21 +60,25 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Teléfono</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${clientes}" var="cliente">
+                    <c:forEach items="${clientes}" var="cliente" >
                         <tr>
                             <td>${cliente.nif}</td>
                             <td>${cliente.nombre}</td>
                             <td>${cliente.apellido}</td>
                             <td>${cliente.email}</td>
-                            <td>${cliente.telefono}</td>
+                            
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
+        <script src="lb/js/bootstrap.min.js"></script>
     </body>
+    <!-- INICIO FOOTER -->
+    <jsp:include page="footer.jsp" />
+    <!-- FIN FOOTER -->
 </html>
