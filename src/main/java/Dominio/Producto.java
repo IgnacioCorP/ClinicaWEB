@@ -55,8 +55,6 @@ public class Producto implements Serializable {
     @NotNull
     @Column(name = "Precio")
     private double precio;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "Fecha_caducidad")
     @Temporal(TemporalType.DATE)
     private Date fechacaducidad;
@@ -77,11 +75,10 @@ public class Producto implements Serializable {
         this.iDpro = iDpro;
     }
 
-    public Producto(Integer iDpro, String nombre, double precio, Date fechacaducidad, byte[] imgP) {
+    public Producto(Integer iDpro, String nombre, double precio, byte[] imgP) {
         this.iDpro = iDpro;
         this.nombre = nombre;
         this.precio = precio;
-        this.fechacaducidad = fechacaducidad;
         this.imgP = imgP;
     }
 

@@ -80,7 +80,7 @@ public class Cliente implements Serializable {
         this.email = email;
         this.clave = clave;
     }
-    
+
     public Cliente(String nif) {
         this.nif = nif;
     }
@@ -178,5 +178,5 @@ public class Cliente implements Serializable {
     public String toString() {
         return "Dominio.Cliente[ nif=" + nif + " ]";
     }
-    
+
 }

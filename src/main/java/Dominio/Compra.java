@@ -7,6 +7,7 @@ package Dominio;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -25,12 +28,15 @@ import javax.persistence.Table;
     @NamedQuery(name = "Compra.findAll", query = "SELECT c FROM Compra c"),
     @NamedQuery(name = "Compra.findByProductoIDpro", query = "SELECT c FROM Compra c WHERE c.compraPK.productoIDpro = :productoIDpro"),
     @NamedQuery(name = "Compra.findByClienteNif", query = "SELECT c FROM Compra c WHERE c.compraPK.clienteNif = :clienteNif"),
-    @NamedQuery(name = "Compra.findByFecha", query = "SELECT c FROM Compra c WHERE c.compraPK.fecha = :fecha")})
+    @NamedQuery(name = "Compra.findByFecha", query = "SELECT c FROM Compra c WHERE c.fecha = :fecha")})
 public class Compra implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CompraPK compraPK;
+    @Column(name = "Fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
     @JoinColumn(name = "cliente_Nif", referencedColumnName = "Nif", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Cliente cliente;
@@ -45,8 +51,8 @@ public class Compra implements Serializable {
         this.compraPK = compraPK;
     }
 
-    public Compra(int productoIDpro, String clienteNif, Date fecha) {
-        this.compraPK = new CompraPK(productoIDpro, clienteNif, fecha);
+    public Compra(int productoIDpro, String clienteNif) {
+        this.compraPK = new CompraPK(productoIDpro, clienteNif);
     }
 
     public CompraPK getCompraPK() {
@@ -55,6 +61,14 @@ public class Compra implements Serializable {
 
     public void setCompraPK(CompraPK compraPK) {
         this.compraPK = compraPK;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public Cliente getCliente() {

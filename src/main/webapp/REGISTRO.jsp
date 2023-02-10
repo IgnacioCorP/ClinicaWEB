@@ -27,7 +27,7 @@
             <!--en esta linea se reparten los elementos-->
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-12 col-md-4 d-flex text-dark justify-content-center">
-                    <form method="POST" action="RegistrarClienteServlet?accion=insertar">
+                    <form method="POST" action="ClienteServlet?accion=insertar">
                         <h1 style="font-size: 30px; text-align: center;"><strong>REGISTRATE</strong></h1>
                         <div class="mb-2" style="margin-left: 30px; margin-right: 30px;">
                             <label for="exampleFormControlInput1" class="form-label">Nif</label>

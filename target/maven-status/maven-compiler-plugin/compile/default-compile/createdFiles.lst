@@ -1,3 +1,4 @@
+Web\LaboratorioServlet.class
 Datos\EmpleadoInterfaz.class
 Negocio\ClienteNegocioInterfaz.class
 Dominio\Departamento.class
@@ -10,10 +11,11 @@ Negocio\EmpleadoNegocioInterfaz.class
 Datos\LaboratorioDao.class
 Dominio\EmpleadoPK.class
 Datos\EmpleadoDao.class
-RegistrarClienteServlet.class
 Datos\LaboratorioInterfaz.class
+Web\EmpleadoServlet.class
 Datos\ProductoDao.class
 Datos\ProductoInterfaz.class
+Web\ClienteServlet.class
 Datos\ClienteInterfaz.class
 Dominio\Compra.class
 Negocio\ProductoService.class

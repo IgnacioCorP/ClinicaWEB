@@ -12,7 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -37,9 +36,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Empleado.findByDireccion", query = "SELECT e FROM Empleado e WHERE e.direccion = :direccion"),
     @NamedQuery(name = "Empleado.findByEmail", query = "SELECT e FROM Empleado e WHERE e.email = :email"),
     @NamedQuery(name = "Empleado.findByFechaNac", query = "SELECT e FROM Empleado e WHERE e.fechaNac = :fechaNac"),
+    @NamedQuery(name = "Empleado.findByClave", query = "SELECT e FROM Empleado e WHERE e.clave = :clave"),
     @NamedQuery(name = "Empleado.findByLaboratorioIDlab", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.laboratorioIDlab = :laboratorioIDlab"),
-    @NamedQuery(name = "Empleado.findByDepartamentoIDdep", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.departamentoIDdep = :departamentoIDdep"),
-    @NamedQuery(name = "Empleado.findByImgE", query = "SELECT e FROM Empleado e WHERE e.imgE = :imgE")})
+    @NamedQuery(name = "Empleado.findByDepartamentoIDdep", query = "SELECT e FROM Empleado e WHERE e.empleadoPK.departamentoIDdep = :departamentoIDdep")})
 public class Empleado implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -68,14 +67,9 @@ public class Empleado implements Serializable {
     private Date fechaNac;
     @Basic(optional = false)
     @NotNull
-    @Lob
+    @Size(min = 1, max = 100)
     @Column(name = "Clave")
-    private byte[] clave;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "imgE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date imgE;
+    private String clave;
     @JoinColumn(name = "departamento_ID_dep", referencedColumnName = "ID_dep", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Departamento departamento;
@@ -90,13 +84,20 @@ public class Empleado implements Serializable {
         this.empleadoPK = empleadoPK;
     }
 
-    public Empleado(EmpleadoPK empleadoPK, String email, byte[] clave, Date imgE) {
+    public Empleado(EmpleadoPK empleadoPK, String email, String clave) {
         this.empleadoPK = empleadoPK;
         this.email = email;
         this.clave = clave;
-        this.imgE = imgE;
     }
 
+    public Empleado(EmpleadoPK empleadoPK, String nombre, String email, String clave) {
+        this.empleadoPK = empleadoPK;
+        this.nombre = nombre;
+        this.email = email;
+        this.clave = clave;
+    }
+    
+    
     public Empleado(String nif, int laboratorioIDlab, int departamentoIDdep) {
         this.empleadoPK = new EmpleadoPK(nif, laboratorioIDlab, departamentoIDdep);
     }
@@ -157,20 +158,12 @@ public class Empleado implements Serializable {
         this.fechaNac = fechaNac;
     }
 
-    public byte[] getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(byte[] clave) {
+    public void setClave(String clave) {
         this.clave = clave;
-    }
-
-    public Date getImgE() {
-        return imgE;
-    }
-
-    public void setImgE(Date imgE) {
-        this.imgE = imgE;
     }
 
     public Departamento getDepartamento() {
