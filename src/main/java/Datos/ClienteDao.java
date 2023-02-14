@@ -9,6 +9,7 @@ import Dominio.Cliente;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -17,18 +18,16 @@ import javax.persistence.Query;
  * @author Alumno Mañana
  */
 @Stateless
-public class ClienteDao implements ClienteInterfaz{
-     // El EJB se encarga de forma automática de hacer las transacciones.
-    
+public class ClienteDao implements ClienteInterfaz {
+    // El EJB se encarga de forma automática de hacer las transacciones.
+
     // Ahora inyectamos la unidad de persistencia a través del API de JPA
     // Simplemente tenemos que usar la anotación e indicar el nombre de nuestra
     // unidad de persistencia
-    @PersistenceContext(unitName="ClinicaWebPU")
+    @PersistenceContext(unitName = "ClinicaWebPU")
     EntityManager em;
-    
-    // Con este objeto de em ya podemos interactuar con nuestra BD
-    
 
+    // Con este objeto de em ya podemos interactuar con nuestra BD
     @Override
     public List<Cliente> findAllClientes() {
         // Creamos un NamedQuery, y el listado lo leemos con getResultList
@@ -42,6 +41,19 @@ public class ClienteDao implements ClienteInterfaz{
         // que queremos buscar
         return em.find(Cliente.class, cliente.getNif());
     }
+    
+    @Override
+    public Cliente loginCliente(String email, String password) {
+        Query query = em.createQuery("from Cliente c where c.Email = :Email and c.Clave = :Clave");
+        query.setParameter("Email", email);
+        query.setParameter("Clave", password);
+        try {
+            Cliente cliente = (Cliente) query.getSingleResult();
+            return cliente;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 
     @Override
     public Cliente findClienteByEmail(Cliente cliente) {
@@ -53,7 +65,7 @@ public class ClienteDao implements ClienteInterfaz{
         // sino lo hemos definido así lo modificamos en nuestra tabla como unique
         return (Cliente) query.getSingleResult();
     }
-    
+
     @Override
     public List<Cliente> findClienteByNombre(Cliente cliente) {
         // En este caso no vamos a usar un NamedQuery, que podríamos haber 
@@ -64,7 +76,7 @@ public class ClienteDao implements ClienteInterfaz{
         // sino lo hemos definido así lo modificamos en nuestra tabla como unique
         return query.getResultList();
     }
-    
+
     @Override
     public List<Cliente> findClienteByApellido(Cliente cliente) {
         // En este caso no vamos a usar un NamedQuery, que podríamos haber 
@@ -75,8 +87,6 @@ public class ClienteDao implements ClienteInterfaz{
         // sino lo hemos definido así lo modificamos en nuestra tabla como unique
         return query.getResultList();
     }
-    
-  
 
     @Override
     public void insertCliente(Cliente cliente) {
@@ -84,11 +94,11 @@ public class ClienteDao implements ClienteInterfaz{
     }
 
     @Override
-    public void updateCliente(Cliente cliente){
+    public void updateCliente(Cliente cliente) {
         // Sincroniza cualquier modificamos que hayamos hecho de la persona en la BD
         em.merge(cliente);
     }
-    
+
     @Override
     public void deleteCliente(Cliente cliente) {
         // 1. actualizamos el estado del objeto en la base de datos => se borra.

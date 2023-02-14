@@ -29,4 +29,6 @@ public interface ClienteInterfaz {
     public void updateCliente(Cliente cliente);
 
     public void deleteCliente(Cliente cliente);
+
+    public Cliente loginCliente(String email, String password);
 }

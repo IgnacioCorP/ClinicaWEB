@@ -33,9 +33,15 @@ public class ClienteService implements ClienteNegocioInterfaz {
     }
 
     @Override
+    public Cliente Login(String email, String Clave) {
+        return clienteInterfaz.loginCliente(email, Clave);
+    }
+
+    @Override
     public List<Cliente> listarClientesPorNombre(Cliente cliente) {
         return clienteInterfaz.findClienteByNombre(cliente);
     }
+
     @Override
     public List<Cliente> listarClientesPorApellido(Cliente cliente) {
         return clienteInterfaz.findClienteByApellido(cliente);

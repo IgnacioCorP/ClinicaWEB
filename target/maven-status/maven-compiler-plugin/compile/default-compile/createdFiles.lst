@@ -3,6 +3,7 @@ Datos\EmpleadoInterfaz.class
 Negocio\ClienteNegocioInterfaz.class
 Dominio\Departamento.class
 Dominio\Laboratorio.class
+Web\DepartamentoServlet.class
 Datos\DepartamentoDao.class
 Dominio\CompraPK.class
 Negocio\DepartamentoService.class

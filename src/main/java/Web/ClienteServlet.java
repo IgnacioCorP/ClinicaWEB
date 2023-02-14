@@ -1,6 +1,5 @@
 package Web;
 
-
 import Datos.ClienteDao;
 import Dominio.Cliente;
 import Negocio.ClienteNegocioInterfaz;
@@ -13,6 +12,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +33,8 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
+        HttpSession sesion = request.getSession();
+
         if (accion != null) {
             switch (accion) {
                 case "insertar":
@@ -44,6 +46,30 @@ public class ClienteServlet extends HttpServlet {
                 case "eliminar":
                     this.EliminarCliente(request, response);
                     break;
+                case "Login":
+                    String email = request.getParameter("Email");
+                    String contrasena = request.getParameter("Clave");
+
+                    System.out.println("Email " + email);
+                    System.out.println("Clave " + contrasena);
+
+                    List<Cliente> usuariosLogin = clienteNegocioInterfaz.listarClientes();
+                    System.out.println(usuariosLogin);
+                    for (int i = 0; i < usuariosLogin.size(); i++) {
+
+                        String correoUsuario = usuariosLogin.get(i).getEmail();
+                        String contraUsuario = usuariosLogin.get(i).getClave();
+                        if (correoUsuario.equals(email) && contraUsuario.equals(contrasena)) {
+                            System.out.println("conectado");
+                            correoUsuario = usuariosLogin.get(i).getEmail();
+                            sesion.setAttribute("Email", correoUsuario);
+                            System.out.println(usuariosLogin.get(i));
+                            response.sendRedirect("index.jsp");
+                        }
+                    }
+
+                    break;
+
                 case "listarClientes":
                     List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
                     System.out.println("clientes: " + clientes);
@@ -66,6 +92,8 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
+        HttpSession sesion = request.getSession();
+
         if (accion != null) {
             switch (accion) {
                 case "insertar":
@@ -77,6 +105,29 @@ public class ClienteServlet extends HttpServlet {
                 case "eliminar":
                     this.EliminarCliente(request, response);
                     break;
+                case "Login":
+                    String email = request.getParameter("Email");
+                    String contrasena = request.getParameter("Clave");
+
+                    System.out.println("Email " + email);
+                    System.out.println("Clave " + contrasena);
+
+                    List<Cliente> usuariosLogin = clienteNegocioInterfaz.listarClientes();
+                    System.out.println(usuariosLogin);
+                    for (int i = 0; i < usuariosLogin.size(); i++) {
+
+                        String correoUsuario = usuariosLogin.get(i).getEmail();
+                        String contraUsuario = usuariosLogin.get(i).getClave();
+                        if (correoUsuario.equals(email) && contraUsuario.equals(contrasena)) {
+                            System.out.println("conectado");
+                            correoUsuario = usuariosLogin.get(i).getEmail();
+                            sesion.setAttribute("Email", correoUsuario);
+                            System.out.println(usuariosLogin.get(i));
+                            response.sendRedirect("index.jsp");
+                        }
+                    }            
+                    break;
+
                 case "listarClientes":
                     List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
                     System.out.println("clientes: " + clientes);
@@ -143,24 +194,24 @@ public class ClienteServlet extends HttpServlet {
         // 4. Redirigimos al flujo de default
         this.accionDefault(request, response);
     }
-   
+
     private void editarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         // 1. Recuperamos los parámetros
         int Nif = Integer.parseInt(request.getParameter("Nif"));
-        
+
         // 2. Ahora invocamos el método buscar cliente de acceso a datos
         Cliente cliente = new Cliente();
-        
+
         // 3. Ahora compartimos el cliente en el alcance de request
         request.setAttribute("cliente", cliente);
-        
+
         String jspeditar = "/editarCliente.jsp";
-        
+
         // 4. Redirigimos y propagamos
         request.getRequestDispatcher(jspeditar).forward(request, response);
-        
+
     }
 
 }

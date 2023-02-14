@@ -31,4 +31,6 @@ public interface ClienteNegocioInterfaz {
     public void modificarCliente(Cliente cliente);
 
     public void eliminarCliente(Cliente cliente);
+
+    public Cliente Login(String email, String Clave);
 }

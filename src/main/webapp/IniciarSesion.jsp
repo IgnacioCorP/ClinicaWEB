@@ -25,7 +25,7 @@
         <div class="container-fluid" style="background-image: url('imgP/empleadofondo.jpg'); background-repeat: no-repeat;  background-size: 100% 100%;">
             <div class="col-sm-12 col-md-4 d-flex justify-content-center pt-5 pb-5" style="margin-left: 600px;">
                 <div class="bg-white p-5 rounded-5 text-secondary shadow d-flex justify-content-center" style="width: 25rem ">
-                    <form method="post" action="logingproceso.php">
+                    <form method="post" action="ClienteServlet?accion=Login"">
                         <div class="d-flex justify-content-center">
                             <img src="assets/login-icon.svg" alt="login-icon" style="height: 7rem" />
                         </div>
