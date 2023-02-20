@@ -18,9 +18,45 @@
     </head>
 
     <body>
-        <!-- INICIO BARRA NAVEGACIÓN -->
-        <jsp:include page="header.jsp" />
-        <!--FIN BARRA DE NAVEGACIÓN-->
+      <!--BARRA DE NAVEGACIÓN-->
+        <div class="container-fluid ">
+            <nav class="navbar navbar-expand-lg navbar-light " style="background: transparent;">
+                <div class="container-fluid">
+                    <!--ÍCONO APP-->
+                    <a class="navbar-brand" href="index.jsp"><img src="imgP/LOGO.png" class="img-fluid"
+                                                                  style="width: 150px; height: 120px;"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.jsp">INICIO</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="productos.jsp" id="navbarDropdown" role="button"
+                                   aria-expanded="false">PRODUCTOS</a>
+
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="productos.jsp" id="navbarDropdown" role="button"
+                                   aria-expanded="false">LABORATORIOS</a>
+
+                            </li>
+
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!--FIN BARRA DE NAVEGACIÓN -->
 
         <div class="container-fluid" style="background-image: url('imgP/empleadofondo.jpg'); background-repeat: no-repeat;  background-size: 100% 100%;">
             <div class="col-sm-12 col-md-4 d-flex justify-content-center pt-5 pb-5" style="margin-left: 600px;">
@@ -45,20 +81,14 @@
                             </div>
                             <input class="form-control bg-light" type="password" name="Clave" placeholder="Password" />
                         </div>
-                        <div class="d-flex justify-content-around mt-1">
-                            <div class="d-flex align-items-center gap-1">
-                                <input class="form-check-input" type="checkbox" />
-                                <div class="pt-1" style="font-size: 0.9rem">Remember me</div>
-                            </div>
-
-                        </div>
+                        
                         <div class="btn  text-black w-100 mt-4 fw-semibold shadow-sm">
                             <button type="submit" class="btn btn-primary" style="align-items: center; justify-content: center;">Login</button>
                         </div>
 
                         <div class="d-flex gap-1 justify-content-center mt-1">
-                            <div>No tienes cuenta?</div>
-                            <a href="IniciarSesion.jsp" class="text-decoration-none text-info fw-semibold">REGISTRATE</a>
+                            <div>¿No tienes cuenta?</div>
+                                <a href="REGISTRO.jsp">REGISTRATE</a>
                         </div>
                         <div class="p-3">
                             <div class="border-bottom text-center" style="height: 0.9rem">

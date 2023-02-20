@@ -5,13 +5,19 @@
  */
 package Web;
 
+import Dominio.Departamento;
+import Dominio.Laboratorio;
+import Negocio.DepartamentoNegocioInterfaz;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,69 +26,100 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "DepartamentoServlet", urlPatterns = {"/DepartamentoServlet"})
 public class DepartamentoServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DepartamentoServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DepartamentoServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+    @Inject
+    // Ahora definimos nuestra variable
+    DepartamentoNegocioInterfaz departamentoNegocioInterfaz;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String accion = request.getParameter("accion");
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    this.InsertarDepartamento(request, response);
+                    break;
+                case "editar":
+                    // this.editarCliente(request, response);
+                    break;
+                case "eliminar":
+                    //this.EliminarCliente(request, response);
+                    break;
+                case "listarClientes":
+                    //List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
+                    // System.out.println("clientes: " + clientes);
+                    // Ponemos usuarios en un alcance
+                    //request.setAttribute("clientes", clientes);
+
+                    // 4. Redigir el flujo desde el controlador a un JSP
+                    response.sendRedirect("listadoClientes.jsp");
+                    break;
+                default:
+                    this.accionDefault(request, response);
+            }
+        } else {
+            //this.accionDefault(request, response);
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String accion = request.getParameter("accion");
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    this.InsertarDepartamento(request, response);
+                    break;
+                case "editar":
+                    //this.eliminarCliente(request, response);
+                    break;
+                case "eliminar":
+                    //this.EliminarCliente(request, response);
+                    break;
+                case "listarDepartamentos":
+                    List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
+                    System.out.println("departamentos: " + departamentos);
+                    // Ponemos usuarios en un alcance
+                    request.setAttribute("departamentos", departamentos);
+
+                    // 4. Redigir el flujo desde el controlador a un JSP
+                    response.sendRedirect("/listadoDepartamentos.jso");
+                    break;
+                case "miCuenta":
+
+                    break;
+                default:
+                    this.accionDefault(request, response);
+            }
+        } else {
+            //this.accionDefault(request, response);
+        }
+    }
+
+    private void accionDefault(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.getRequestDispatcher("/departamentos.jsp").forward(request,
+                response);
+
+        HttpSession sesion = request.getSession();
+
+    }
+
+    protected void InsertarDepartamento(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String Nombre = request.getParameter("Nombre");
+        String Descripcion = request.getParameter("Descripcion");
+
+        Departamento departamento = new Departamento(Nombre, Descripcion);
+        departamentoNegocioInterfaz.registrarDepartamento(departamento);
+        System.out.println("registrosModificados = " + departamento);
+        //4. Redirigimos a la acción por defecto
+        request.getRequestDispatcher("/index.jsp").forward(request,
+                response);
+    }
 
 }

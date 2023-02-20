@@ -66,6 +66,11 @@ public class Departamento implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public Departamento(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
     public Integer getIDdep() {
         return iDdep;
     }
@@ -122,5 +127,5 @@ public class Departamento implements Serializable {
     public String toString() {
         return "Dominio.Departamento[ iDdep=" + iDdep + " ]";
     }
-    
+
 }

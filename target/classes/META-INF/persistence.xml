@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-  <persistence-unit name="ClinicaWebPU" transaction-type="JTA">
-    <jta-data-source>jdbc/ClinicawebDb</jta-data-source>
-    <class>Dominio.Departamento</class>
-    <class>Dominio.Laboratorio</class>
-    <class>Dominio.ClienteHasProducto</class>
-    <class>Dominio.Producto</class>
-    <class>Dominio.Empleado</class>
-    <class>Dominio.EmpleadoPK</class>
-    <class>Dominio.Cliente</class>
-    <class>Dominio.ClienteHasProductoPK</class>
-    <class>Dominio.Compra</class>
-  </persistence-unit>
+    <persistence-unit name="ClinicaWebPU" transaction-type="JTA">
+        <jta-data-source>jdbc/ClinicawebDb</jta-data-source>
+        <class>Dominio.Departamento</class>
+        <class>Dominio.Laboratorio</class>
+        <class>Dominio.ClienteHasProducto</class>
+        <class>Dominio.Producto</class>
+        <class>Dominio.Empleado</class>
+        <class>Dominio.EmpleadoPK</class>
+        <class>Dominio.Cliente</class>
+        <class>Dominio.ClienteHasProductoPK</class>
+        <class>Dominio.Compra</class>
+    </persistence-unit>
+    <servlet>
+        <servlet-name>ProductosServlet</servlet-name>
+        <servlet-class>Web.ProductosServlet</servlet-class>
+        <multipart-config>
+            <file-size-threshold>1048576</file-size-threshold>
+            <max-file-size>5242880</max-file-size>
+            <max-request-size>20971520</max-request-size>
+        </multipart-config>
+    </servlet>
+
 </persistence>

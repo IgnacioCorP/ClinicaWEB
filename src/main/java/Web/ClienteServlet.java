@@ -64,7 +64,7 @@ public class ClienteServlet extends HttpServlet {
                             correoUsuario = usuariosLogin.get(i).getEmail();
                             sesion.setAttribute("Email", correoUsuario);
                             System.out.println(usuariosLogin.get(i));
-                            response.sendRedirect("index.jsp");
+                            response.sendRedirect("empleado.jsp");
                         }
                     }
 
@@ -123,7 +123,7 @@ public class ClienteServlet extends HttpServlet {
                             correoUsuario = usuariosLogin.get(i).getEmail();
                             sesion.setAttribute("Email", correoUsuario);
                             System.out.println(usuariosLogin.get(i));
-                            response.sendRedirect("index.jsp");
+                            response.sendRedirect("empleado.jsp");
                         }
                     }            
                     break;

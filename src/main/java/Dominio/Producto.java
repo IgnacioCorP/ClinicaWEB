@@ -23,6 +23,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.servlet.http.Part;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -82,6 +83,17 @@ public class Producto implements Serializable {
         this.imgP = imgP;
     }
 
+    public Producto(String nombre, double precio, byte[] imgP) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.imgP = imgP;
+    }
+
+    public Producto(String nombre, double precio, Part imgPart) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     public Integer getIDpro() {
         return iDpro;
     }
@@ -161,6 +173,10 @@ public class Producto implements Serializable {
     @Override
     public String toString() {
         return "Dominio.Producto[ iDpro=" + iDpro + " ]";
+    }
+
+    public void setImagen(Part imagenPart) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
