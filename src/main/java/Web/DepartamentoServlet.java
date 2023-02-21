@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alumno Mañana
  */
-@WebServlet(name = "DepartamentoServlet", urlPatterns = {"/DepartamentoServlet"})
+@WebServlet(name = "DepartamentoServlet", urlPatterns = {"/Departamento"})
 public class DepartamentoServlet extends HttpServlet {
 
     @Inject
@@ -45,14 +45,14 @@ public class DepartamentoServlet extends HttpServlet {
                 case "eliminar":
                     //this.EliminarCliente(request, response);
                     break;
-                case "listarClientes":
-                    //List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
-                    // System.out.println("clientes: " + clientes);
-                    // Ponemos usuarios en un alcance
-                    //request.setAttribute("clientes", clientes);
-
-                    // 4. Redigir el flujo desde el controlador a un JSP
-                    response.sendRedirect("listadoClientes.jsp");
+                case "listarDepartamentos":
+                    List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
+                    System.out.println("departamentos: " + departamentos);
+                   // Ponemos usuarios en un alcance
+                    request.setAttribute("departamentos", departamentos);
+                    request.getRequestDispatcher("/listadoDepartamentos.jsp").forward(request,
+                            response);
+                   
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -79,13 +79,12 @@ public class DepartamentoServlet extends HttpServlet {
                     //this.EliminarCliente(request, response);
                     break;
                 case "listarDepartamentos":
-                    List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
+                   List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
                     System.out.println("departamentos: " + departamentos);
-                    // Ponemos usuarios en un alcance
+                   // Ponemos usuarios en un alcance
                     request.setAttribute("departamentos", departamentos);
-
-                    // 4. Redigir el flujo desde el controlador a un JSP
-                    response.sendRedirect("/listadoDepartamentos.jso");
+                    request.getRequestDispatcher("/listadoDepartamentos.jsp").forward(request,
+                            response);
                     break;
                 case "miCuenta":
 

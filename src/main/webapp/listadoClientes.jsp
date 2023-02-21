@@ -9,12 +9,12 @@
         <link rel="stylesheet" href="lb/css/bootstrap.min.css">
     </head>
     <body>
-        <!--BARRA DE NAVEGACIÓN-->
+         <!--BARRA DE NAVEGACIÓN-->
         <div class="container-fluid ">
             <nav class="navbar navbar-expand-lg navbar-light " style="background: transparent;">
                 <div class="container-fluid">
                     <!--ÍCONO APP-->
-                    <a class="navbar-brand" href="empleado.php"><img src="imgP/LOGO.png" class="img-fluid" style="width: 150px; height: 120px;"></a>
+                    <a class="navbar-brand" href="empleado.jsp"><img src="imgP/LOGO.png" class="img-fluid" style="width: 150px; height: 120px;"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -33,6 +33,13 @@
                             <li class="nav-item ">
                                 <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">CLIENTES</a>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="Laboratorio?accion=listarLaboratorios" id="navbarDropdown" role="button" aria-expanded="false">LABORATORIOS</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">DEPARTAMENTOS</a>
+                            </li>
+                            
 
                         </ul>
                         <div class="text-center">

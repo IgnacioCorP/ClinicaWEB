@@ -40,7 +40,7 @@
                                 <a class="nav-link" href="Departamento?accion=listarDepartamentos" id="navbarDropdown" role="button" aria-expanded="false">DEPARTAMENTOS</a>
                             </li>
                              <li class="nav-item ">
-                                <a class="nav-link" href="registrarLaboratorio.jsp" id="navbarDropdown" role="button" aria-expanded="false">AÑADIR LABORATORIO</a>
+                                <a class="nav-link" href="registrarDepartamentos.jsp" id="navbarDropdown" role="button" aria-expanded="false">AÑADIR DEPARTAMENTO</a>
                             </li>
 
                         </ul>
@@ -54,23 +54,21 @@
         <!--FIN BARRA DE NAVEGACIÓN -->
         <div class="container-fluid col-sm-12 col-md-6">
 
-            <h1 style="justify-content: center; display: flex; color: blue; padding-top: 100px">LABORATORIOS</h1>
+            <h1 style="justify-content: center; display: flex; color: blue; padding-top: 100px">DEPARTAMENTOS</h1>
             <table class="table">
                 <thead>
                     <tr>
                         
                         <th scope="col">NOMBRE</th>
-                        <th scope="col">DIRECCION</th>
-                        <th scope="col">TELÉFONO</th>
+                        <th scope="col">DESCRIPCIÓN</th>
                        
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${laboratorios}" var="laboratorio" >
+                    <c:forEach items="${departamentos}" var="departamento" >
                         <tr>
-                            <td>${laboratorio.getNombresede()}</td>
-                            <td>${laboratorio.getDireccion()}</td>
-                            <td>${laboratorio.getTelefono()}</td>
+                            <td>${departamento.getNombre()}</td>
+                            <td>${departamento.getDescripcion()}</td>
                             
                         </tr>
                     </c:forEach>

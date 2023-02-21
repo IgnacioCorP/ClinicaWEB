@@ -50,7 +50,8 @@ public class LaboratorioServlet extends HttpServlet {
                     List<Laboratorio> laboratorios = laboratorioNegocioInterfaz.listarLaboratorios();
                     System.out.println("laboratorios: " + laboratorios);
                     request.setAttribute("laboratorios", laboratorios);
-                  
+                    request.getRequestDispatcher("/listadoLaboratorios.jsp").forward(request,
+                            response);
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -76,10 +77,12 @@ public class LaboratorioServlet extends HttpServlet {
                 case "eliminar":
                     //this.EliminarCliente(request, response);
                     break;
-                case "listarClientes":
+                case "listarLaboratorios":
                     List<Laboratorio> laboratorios = laboratorioNegocioInterfaz.listarLaboratorios();
                     System.out.println("laboratorios: " + laboratorios);
                     request.setAttribute("laboratorios", laboratorios);
+                    request.getRequestDispatcher("/listadoLaboratorios.jsp").forward(request,
+                            response);
                     break;
                 case "miCuenta":
                     Laboratorio laboratorio = (Laboratorio) request.getSession().getAttribute("cliente");
