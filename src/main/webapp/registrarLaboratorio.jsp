@@ -83,7 +83,7 @@
         <div class="row  d-flex justify-content-center " style="background-image: url('imgP/fondoindex.jpg'); background-repeat: no-repeat;  background-size: 100% 100%; padding-top: 100px; padding-bottom: 100px; height:790px;">
             <div class="form-register col sm-12 col-md-4">
                 <div class="container text-center">
-                    <form method="POST" action="LaboratorioServlet?accion=insertar">
+                    <form method="POST" action="Laboratorio?accion=insertar">
                         <h4>REGISTRA LABORATORIO</h4>
                         <input type="text" class="form-control"  name="Nombre_sede" placeholder="Nombre">
 

@@ -5,6 +5,7 @@ Dominio\Departamento.class
 Dominio\Laboratorio.class
 Web\DepartamentoServlet.class
 Datos\DepartamentoDao.class
+Web\ListasServelt.class
 Dominio\CompraPK.class
 Negocio\DepartamentoService.class
 Datos\ClienteDao.class

@@ -47,7 +47,7 @@
                                 <a class="nav-link" href="index.jsp">INICIO</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="productos.jsp" id="navbarDropdown" role="button"
+                                <a class="nav-link" href="ListaProductos.jsp" id="navbarDropdown" role="button"
                                    aria-expanded="false">PRODUCTOS</a>
 
                             </li>
@@ -56,7 +56,12 @@
                                    aria-expanded="false">LABORATORIOS</a>
 
                             </li>
+                             <li class="nav-item ">
+                                <a class="nav-link" href="LoginAdmin.jsp" id="navbarDropdown" role="button"
+                                   aria-expanded="false">EMPLEADOS</a>
 
+                            </li>
+                            
 
 
 

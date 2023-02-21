@@ -11,14 +11,11 @@
     <body>
         <!--BARRA DE NAVEGACIÓN-->
         <div class="container-fluid ">
-            <nav class="navbar navbar-expand-lg navbar-light " style="background: lightgrey; ">
+            <nav class="navbar navbar-expand-lg navbar-light " style="background: transparent;">
                 <div class="container-fluid">
                     <!--ÍCONO APP-->
-                    <a class="navbar-brand" href="empleado.php"><img src="imgP/LOGO.png" class="img-fluid"
-                                                                     style="width: 150px; height: 120px;"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand" href="empleado.php"><img src="imgP/LOGO.png" class="img-fluid" style="width: 150px; height: 120px;"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -27,32 +24,27 @@
                                 <a class="nav-link" href="empleado.jsp">INICIO</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="productosempleado.jsp" id="navbarDropdown" role="button"
-                                   aria-expanded="false">PRODUCTOS</a>
+                                <a class="nav-link" href="productosempleado.jsp" id="navbarDropdown" role="button" aria-expanded="false">PRODUCTOS</a>
 
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="listadoClientes.jsp" id="navbarDropdown" role="button"
-                                   aria-expanded="false">CLIENTES</a>
+                                <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">EMPLEADOS</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="listarCliente.jsp" id="navbarDropdown" role="button"
-                                   aria-expanded="false">MI CUENTA</a>
+                                <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">CLIENTES</a>
                             </li>
-
-
-
 
                         </ul>
-
+                        <div class="text-center">
+                            <a href="index.jsp" class="btn btn-primary">CERRAR SESIÓN</a>
+                        </div>
                     </div>
                 </div>
             </nav>
         </div>
         <!--FIN BARRA DE NAVEGACIÓN -->
-        <div class="container-fluid col-sm-12 col-md-6">
-
-            <h1 style="justify-content: center; display: flex; color: blue; padding-top: 100px">CLIENTES</h1>
+        <div class="container-fluid col-sm-12 col-md-8">
+            <h1 style="justify-content: center; display: flex; color: blue; padding-top: 10px">CLIENTES</h1>
             <table class="table">
                 <thead>
                     <tr>

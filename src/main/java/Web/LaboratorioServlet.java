@@ -22,14 +22,15 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alumno Mañana
  */
-@WebServlet(name = "LaboratorioServlet", urlPatterns = {"/LaboratorioServlet"})
+@WebServlet(name = "LaboratorioServlet", urlPatterns = {"/Laboratorio"})
 public class LaboratorioServlet extends HttpServlet {
 
     // Ahora hacemos la inyección del componente EJB local al servlet
     @Inject
     // Ahora definimos nuestra variable
     LaboratorioNegocioInterfaz laboratorioNegocioInterfaz; // Cremos una instancia de nuestra if local
-@Override
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -40,19 +41,16 @@ public class LaboratorioServlet extends HttpServlet {
                     this.InsertarLaboratorio(request, response);
                     break;
                 case "editar":
-                   // this.editarCliente(request, response);
+                    // this.editarCliente(request, response);
                     break;
                 case "eliminar":
                     //this.EliminarCliente(request, response);
                     break;
-                case "listarClientes":
-                    //List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
-                   // System.out.println("clientes: " + clientes);
-                    // Ponemos usuarios en un alcance
-                    //request.setAttribute("clientes", clientes);
-
-                    // 4. Redigir el flujo desde el controlador a un JSP
-                    response.sendRedirect("listadoClientes.jsp");
+                case "listarLaboratorios":
+                    List<Laboratorio> laboratorios = laboratorioNegocioInterfaz.listarLaboratorios();
+                    System.out.println("laboratorios: " + laboratorios);
+                    request.setAttribute("laboratorios", laboratorios);
+                  
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -61,6 +59,7 @@ public class LaboratorioServlet extends HttpServlet {
             //this.accionDefault(request, response);
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -80,11 +79,7 @@ public class LaboratorioServlet extends HttpServlet {
                 case "listarClientes":
                     List<Laboratorio> laboratorios = laboratorioNegocioInterfaz.listarLaboratorios();
                     System.out.println("laboratorios: " + laboratorios);
-                    // Ponemos usuarios en un alcance
                     request.setAttribute("laboratorios", laboratorios);
-
-                    // 4. Redigir el flujo desde el controlador a un JSP
-                    response.sendRedirect("listadoClientes.jsp");
                     break;
                 case "miCuenta":
                     Laboratorio laboratorio = (Laboratorio) request.getSession().getAttribute("cliente");
@@ -100,8 +95,7 @@ public class LaboratorioServlet extends HttpServlet {
             //this.accionDefault(request, response);
         }
     }
-    
-    
+
     private void accionDefault(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -121,19 +115,17 @@ public class LaboratorioServlet extends HttpServlet {
 
     protected void InsertarLaboratorio(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
         String Nombre_sede = request.getParameter("Nombre_sede");
         String Direccion = request.getParameter("Direccion");
         String Telefono = request.getParameter("Telefono");
 
-        Laboratorio laboratorio = new Laboratorio(Nombre_sede,Direccion,Telefono);
+        Laboratorio laboratorio = new Laboratorio(Nombre_sede, Direccion, Telefono);
         laboratorioNegocioInterfaz.registrarLaboratorio(laboratorio);
         System.out.println("registrosModificados = " + laboratorio);
         //4. Redirigimos a la acción por defecto
         request.getRequestDispatcher("/index.jsp").forward(request,
                 response);
     }
-
-   
 
 }

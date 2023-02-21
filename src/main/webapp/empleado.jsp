@@ -37,10 +37,16 @@
 
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="listadoClientes.jsp" id="navbarDropdown" role="button" aria-expanded="false">EMPLEADOS</a>
+                                <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">EMPLEADOS</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="listadoClientes.jsp" id="navbarDropdown" role="button" aria-expanded="false">CLIENTES</a>
+                                <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">CLIENTES</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="Laboratorio?accion=listarLaboratorios" id="navbarDropdown" role="button" aria-expanded="false">LABORATORIOS</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">DEPARTAMENTOS</a>
                             </li>
 
                         </ul>

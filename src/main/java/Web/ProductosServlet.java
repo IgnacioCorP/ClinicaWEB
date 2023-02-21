@@ -45,7 +45,7 @@ public class ProductosServlet extends HttpServlet {
         if (accion != null) {
             switch (accion) {
                 case "insertar":
-                   this.insertarProducto(request, response);
+                    this.insertarProducto(request, response);
                     break;
                 case "editar":
                     // this.editarCliente(request, response);
@@ -55,12 +55,8 @@ public class ProductosServlet extends HttpServlet {
                     break;
                 case "listarProductos":
                     List<Producto> productos = productoNegocioInterfaz.listarProductos();
-                    System.out.println("productos: " + productos);
-                    // Ponemos usuarios en un alcance
                     request.setAttribute("productos", productos);
-
-                    // 4. Redigir el flujo desde el controlador a un JSP
-                    response.sendRedirect("listaProductos.jsp");
+                    request.getRequestDispatcher("/ListaProductos.jsp").forward(request, response);
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -109,13 +105,10 @@ public class ProductosServlet extends HttpServlet {
                     break;
                 case "listarProductos":
                     List<Producto> productos = productoNegocioInterfaz.listarProductos();
-                    System.out.println("productos: " + productos);
-                    // Ponemos usuarios en un alcance
                     request.setAttribute("productos", productos);
-
-                    // 4. Redigir el flujo desde el controlador a un JSP
-                    response.sendRedirect("listaProductos.jsp");
+                    request.getRequestDispatcher("/ListaProductos.jsp").forward(request, response);
                     break;
+
                 default:
                     this.accionDefault(request, response);
             }
@@ -131,7 +124,7 @@ public class ProductosServlet extends HttpServlet {
     }
 
     private void insertarProducto(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException  {
+            throws ServletException, IOException {
         // Obtener los detalles del nuevo producto del formulario
         String Nombre = request.getParameter("Nombre");
         double Precio = Double.parseDouble(request.getParameter("Precio"));

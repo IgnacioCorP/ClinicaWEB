@@ -42,6 +42,16 @@ public class EmpleadoPK implements Serializable {
         this.departamentoIDdep = departamentoIDdep;
     }
 
+    public EmpleadoPK(String nif) {
+        this.nif = nif;
+    }
+
+    public EmpleadoPK(String nif, Laboratorio laboratorio, Departamento departamento) {
+        this.nif = nif;
+        this.laboratorioIDlab = laboratorioIDlab;
+        this.departamentoIDdep = departamentoIDdep;
+    }
+
     public String getNif() {
         return nif;
     }
@@ -98,5 +108,5 @@ public class EmpleadoPK implements Serializable {
     public String toString() {
         return "Dominio.EmpleadoPK[ nif=" + nif + ", laboratorioIDlab=" + laboratorioIDlab + ", departamentoIDdep=" + departamentoIDdep + " ]";
     }
-    
+
 }

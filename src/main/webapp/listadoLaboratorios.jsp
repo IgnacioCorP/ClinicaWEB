@@ -14,7 +14,7 @@
             <nav class="navbar navbar-expand-lg navbar-light " style="background: lightgrey; ">
                 <div class="container-fluid">
                     <!--ÍCONO APP-->
-                    <a class="navbar-brand" href="empleado.php"><img src="imgP/LOGO.png" class="img-fluid"
+                    <a class="navbar-brand" href="empleado.jsp"><img src="imgP/LOGO.png" class="img-fluid"
                                                                      style="width: 150px; height: 120px;"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -60,7 +60,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        
                         <th scope="col">NOMBRE</th>
                         <th scope="col">DIRECCION</th>
                         <th scope="col">TELÉFONO</th>
@@ -70,7 +70,6 @@
                 <tbody>
                     <c:forEach items="${laboratorios}" var="laboratorio" >
                         <tr>
-                            <td>${laboratorio.ID_lab}</td>
                             <td>${laboratorio.Nombre_sede}</td>
                             <td>${laboratorio.Direccion}</td>
                             <td>${laboratorio.Telefono}</td>

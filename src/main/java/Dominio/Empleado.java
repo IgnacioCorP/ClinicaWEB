@@ -96,6 +96,27 @@ public class Empleado implements Serializable {
         this.email = email;
         this.clave = clave;
     }
+
+    public Empleado(EmpleadoPK empleadoPK, String nombre, String apellido, String telefono, String email, String clave) {
+        this.empleadoPK = empleadoPK;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.email = email;
+        this.clave = clave;
+    }
+    
+
+    public Empleado(EmpleadoPK empleadoPK, String nombre, String apellido, String telefono, String email, String clave, Departamento departamento, Laboratorio laboratorio) {
+        this.empleadoPK = empleadoPK;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.email = email;
+        this.clave = clave;
+        this.departamento = departamento;
+        this.laboratorio = laboratorio;
+    }
     
     
     public Empleado(String nif, int laboratorioIDlab, int departamentoIDdep) {
