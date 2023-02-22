@@ -83,23 +83,28 @@
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="productosempleado.jsp" id="navbarDropdown" role="button" aria-expanded="false">PRODUCTOS</a>
+
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="listadoClientes.jsp" id="navbarDropdown" role="button" aria-expanded="false">EMPLEADOS</a>
+                                <a class="nav-link" href="Empleado?accion=listarEmpleados" id="navbarDropdown" role="button" aria-expanded="false">EMPLEADOS</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="listadoClientes.jsp" id="navbarDropdown" role="button" aria-expanded="false">CLIENTES</a>
+                                <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">CLIENTES</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="RegistrarProducto.jsp" id="navbarDropdown" role="button" aria-expanded="false">AÑADIR PRODUCTO</a>
+                                <a class="nav-link" href="Laboratorio?accion=listarLaboratorios" id="navbarDropdown" role="button" aria-expanded="false">LABORATORIOS</a>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="Departamento?accion=listarDepartamentos" id="navbarDropdown" role="button" aria-expanded="false">DEPARTAMENTOS</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="RegistrarProducto.jsp" id="navbarDropdown" role="button" aria-expanded="false">AÑADIR PRODUCTOS</a>
+                            </li>
+
                         </ul>
-                        <form class="d-flex" method="post">
-                            <input class="form-control me-2" name="keyword" type="search" placeholder="BUSCAR" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">BUSCAR</button>
-                        </form>
-
-
+                        <div class="text-center">
+                            <a href="index.jsp" class="btn btn-primary">CERRAR SESIÓN</a>
+                        </div>
                     </div>
                 </div>
             </nav>

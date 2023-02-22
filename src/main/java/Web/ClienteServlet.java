@@ -77,11 +77,9 @@ public class ClienteServlet extends HttpServlet {
                 case "listarClientes":
                     List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
                     System.out.println("clientes: " + clientes);
-                    // Ponemos usuarios en un alcance
                     request.setAttribute("clientes", clientes);
-
-                    // 4. Redigir el flujo desde el controlador a un JSP
-                    response.sendRedirect("listadoClientes.jsp");
+                    /*request.getRequestDispatcher("/listadoClientes.jsp").forward(request,
+                response);*/
                     break;
                 default:
                     this.accionDefault(request, response);

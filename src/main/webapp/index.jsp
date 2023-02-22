@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>KUANTUM</title>
         <link rel="stylesheet" href="lb/css/bootstrap.min.css">
 
     </head>
@@ -50,12 +50,7 @@
                                 <a class="nav-link" href="ListaProductos.jsp" id="navbarDropdown" role="button"
                                    aria-expanded="false">PRODUCTOS</a>
 
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="productos.jsp" id="navbarDropdown" role="button"
-                                   aria-expanded="false">LABORATORIOS</a>
-
-                            </li>
+                            </li>                         
                              <li class="nav-item ">
                                 <a class="nav-link" href="LoginAdmin.jsp" id="navbarDropdown" role="button"
                                    aria-expanded="false">EMPLEADOS</a>

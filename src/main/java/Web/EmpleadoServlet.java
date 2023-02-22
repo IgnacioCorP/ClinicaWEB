@@ -80,7 +80,7 @@ public class EmpleadoServlet extends HttpServlet {
                     }
 
                     request.setAttribute("mensajeError", "Email o contraseña incorrectos");
-                    request.getRequestDispatcher("LoginAdmin.jsp").forward(request, response);                
+                    request.getRequestDispatcher("LoginAdmin.jsp").forward(request, response);
 
                     break;
 
@@ -89,6 +89,13 @@ public class EmpleadoServlet extends HttpServlet {
                     System.out.println("clientes: " + clientes);
                     request.setAttribute("clientes", clientes);
                     /*request.getRequestDispatcher("/listadoClientes.jsp").forward(request,
+                response);*/
+                    break;
+                case "listarEmpleados":
+                    List<Empleado> empleados = empleadoNegocioInterfaz.listarEmpleados();
+                    System.out.println("empleados: " + empleados);
+                    request.setAttribute("empleados", empleados);
+                    /*request.getRequestDispatcher("listadoEmpleados.jsp").forward(request,
                 response);*/
                     break;
                 default:
@@ -149,6 +156,13 @@ public class EmpleadoServlet extends HttpServlet {
                     request.getRequestDispatcher("/listadoClientes.jsp").forward(request,
                             response);
                     break;
+                case "listarEmpleados":
+                    List<Empleado> empleados = empleadoNegocioInterfaz.listarEmpleados();
+                    System.out.println("empleados: " + empleados);
+                    request.setAttribute("empleados", empleados);
+                    request.getRequestDispatcher("listadoEmpleados.jsp").forward(request,
+                response);
+                    break;
                 case "miCuenta":
 
                     break;
@@ -188,7 +202,7 @@ public class EmpleadoServlet extends HttpServlet {
         empleadoNegocioInterfaz.registrarEmpleado(empleado);
 
         // Redirigir a la página de confirmación o a la página principal del sitio web
-        request.getRequestDispatcher("/IniciarSesion.jsp").forward(request,
+        request.getRequestDispatcher("/Empleado?accion=listarEmpleados").forward(request,
                 response);
     }
 
