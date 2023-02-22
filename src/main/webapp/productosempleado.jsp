@@ -114,30 +114,33 @@
         <!--en esta linea se reparten los elementos-->
 
         <!-- Swiper -->
+
         <div class="d-flex justify-content-center mb-5" style=" background-image: url('imgP/fondoindex.jpg'); background-repeat: no-repeat;  background-size: 100% 100%; padding-top: 100px; padding-bottom: 100px; font-size: 40px; ">
 
             <div class="container pt-5 team">
                 <div class="row">
-                   
-                    <div class="col-lg-3 col-sm-12 col-md-4 mb-5">
-                        <div class="card border-0  text-center" style="color: black;">
-                            <img class="card-img-top" src="<?php echo $alumno->imgP ?>" alt="">
-                            <div class="card-social d-flex align-items-center justify-content-center">
+                    <c:forEach items="${productos}" var="producto" >
+                        <div class="col-lg-3 col-sm-12 col-md-4 mb-5">
 
-                            </div>
-                            <div class="card-body ">
-                                <h4 class="card-title "><?php echo $alumno->Nombre ?></h4>
-                                <p class="card-text"><?php echo $alumno->Precio . '€' ?></p>
 
-                                <a class="" style="font-size: 12pt;" href="editarProducto.php?Nif=<?php echo $alumno->ID_pro ?>"></a>
-                                <a class="" style="font-size: 12pt;" href="eliminarProducto.php?ID_pro=<?php echo $alumno->ID_pro ?>">ELIMINAR</a>
+                            <div class="card border-0  text-center" style="color: black;">
+                                <img class="card-img-top" src="${producto.getImgP()}" alt="">
+                                <div class="card-social d-flex align-items-center justify-content-center">
+
+                                </div>
+
+                                <div class="card-body ">
+                                    <h4 class="card-title ">${producto.getNombre()}</h4>
+                                    <p class="card-text">${producto.getPrecio()}</p>
+                                    <a class="" style="font-size: 12pt;" href="">ELIMINAR</a>
+
+                                </div>
 
                             </div>
                         </div>
-                    </div>
-                    <?php
-                    }
-                    ?>
+                    </c:forEach>
+
+
                 </div>
             </div>
         </div>

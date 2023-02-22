@@ -64,7 +64,6 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
-                        <th scope="col">ELIMINAR</th>
 
 
                     </tr>
@@ -76,7 +75,6 @@
                             <td>${empleado.nombre}</td>
                             <td>${empleado.apellido}</td>
                             <td>${empleado.email}</td>                          
-                            <td ><a class="text-dark" href="EliminarCli?eliminar=${empleado.getEmpleadoPK().getNif()}"><i class="fa-solid fa-trash"></i></a></td>
 
 
                         </tr>

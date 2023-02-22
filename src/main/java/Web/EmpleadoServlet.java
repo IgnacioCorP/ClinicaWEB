@@ -157,11 +157,8 @@ public class EmpleadoServlet extends HttpServlet {
                             response);
                     break;
                 case "listarEmpleados":
-                    List<Empleado> empleados = empleadoNegocioInterfaz.listarEmpleados();
-                    System.out.println("empleados: " + empleados);
-                    request.setAttribute("empleados", empleados);
-                    request.getRequestDispatcher("listadoEmpleados.jsp").forward(request,
-                response);
+                    this.ListarEmpleados(request, response);
+
                     break;
                 case "miCuenta":
 
@@ -202,7 +199,16 @@ public class EmpleadoServlet extends HttpServlet {
         empleadoNegocioInterfaz.registrarEmpleado(empleado);
 
         // Redirigir a la página de confirmación o a la página principal del sitio web
-        request.getRequestDispatcher("/Empleado?accion=listarEmpleados").forward(request,
+        this.ListarEmpleados(request, response);
+    }
+
+    protected void ListarEmpleados(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Recuperar los parámetros de la solicitud
+        List<Empleado> empleados = empleadoNegocioInterfaz.listarEmpleados();
+        System.out.println("empleados: " + empleados);
+        request.setAttribute("empleados", empleados);
+        request.getRequestDispatcher("listadoEmpleados.jsp").forward(request,
                 response);
     }
 

@@ -26,7 +26,7 @@
                                 <a class="nav-link" href="empleado.jsp">INICIO</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="productosempleado.jsp" id="navbarDropdown" role="button" aria-expanded="false">PRODUCTOS</a>
+                                <a class="nav-link" href="Productos?accion=listarProductos" id="navbarDropdown" role="button" aria-expanded="false">PRODUCTOS</a>
 
                             </li>
                             <li class="nav-item ">
@@ -61,7 +61,6 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
-                        <th scope="col">MODIFICAR</th>
                         <th scope="col">ELIMINAR</th>
 
                     </tr>
@@ -73,7 +72,6 @@
                             <td>${cliente.nombre}</td>
                             <td>${cliente.apellido}</td>
                             <td>${cliente.email}</td>                          
-                            <td><a class="text-dark" href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
                             <td ><a class="text-dark" href="EliminarCli?eliminar=${cliente.nif}"><i class="fa-solid fa-trash"></i></a></td>
 
 

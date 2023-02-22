@@ -28,7 +28,7 @@ import org.apache.logging.log4j.core.util.IOUtils;
  *
  * @author Alumno Mañana
  */
-@WebServlet(name = "ProductosServlet", urlPatterns = {"/ProductosServlet"})
+@WebServlet(name = "ProductosServlet", urlPatterns = {"/Productos"})
 public class ProductosServlet extends HttpServlet {
 
     // Ahora hacemos la inyección del componente EJB local al servlet
@@ -55,8 +55,9 @@ public class ProductosServlet extends HttpServlet {
                     break;
                 case "listarProductos":
                     List<Producto> productos = productoNegocioInterfaz.listarProductos();
+                    System.out.println("productos: " + productos);
                     request.setAttribute("productos", productos);
-                    request.getRequestDispatcher("/ListaProductos.jsp").forward(request, response);
+                    //request.getRequestDispatcher("productosempleado.jsp").forward(request, response);
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -106,7 +107,7 @@ public class ProductosServlet extends HttpServlet {
                 case "listarProductos":
                     List<Producto> productos = productoNegocioInterfaz.listarProductos();
                     request.setAttribute("productos", productos);
-                    request.getRequestDispatcher("/ListaProductos.jsp").forward(request, response);
+                    //request.getRequestDispatcher("/productosempleado.jsp").forward(request, response);
                     break;
 
                 default:
