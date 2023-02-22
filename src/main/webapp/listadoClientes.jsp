@@ -7,9 +7,11 @@
         <title>Listado de Clientes</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="stylesheet" href="lb/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lb/fontawesome-free-6.2.0-web/css/all.min.css">
+
     </head>
     <body>
-         <!--BARRA DE NAVEGACIÓN-->
+        <!--BARRA DE NAVEGACIÓN-->
         <div class="container-fluid ">
             <nav class="navbar navbar-expand-lg navbar-light " style="background: transparent;">
                 <div class="container-fluid">
@@ -39,7 +41,7 @@
                             <li class="nav-item ">
                                 <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">DEPARTAMENTOS</a>
                             </li>
-                            
+
 
                         </ul>
                         <div class="text-center">
@@ -59,7 +61,9 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
-                       
+                        <th scope="col">MODIFICAR</th>
+                        <th scope="col">ELIMINAR</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -68,8 +72,11 @@
                             <td>${cliente.nif}</td>
                             <td>${cliente.nombre}</td>
                             <td>${cliente.apellido}</td>
-                            <td>${cliente.email}</td>
-                            
+                            <td>${cliente.email}</td>                          
+                            <td><a class="text-dark" href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td ><a class="text-dark" href="EliminarCli?eliminar=${cliente.nif}"><i class="fa-solid fa-trash"></i></a></td>
+
+
                         </tr>
                     </c:forEach>
                 </tbody>

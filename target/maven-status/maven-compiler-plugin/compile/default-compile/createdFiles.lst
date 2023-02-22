@@ -17,10 +17,12 @@ Datos\LaboratorioInterfaz.class
 Web\EmpleadoServlet.class
 Datos\ProductoDao.class
 Datos\ProductoInterfaz.class
+Web\Eliminar\EliminarCli.class
 Web\ClienteServlet.class
 Datos\ClienteInterfaz.class
 Dominio\Compra.class
 Negocio\ProductoService.class
+Web\EliminarServlet.class
 Web\ProductosServlet.class
 Datos\DepartamentoInterfaz.class
 Negocio\EmpleadoService.class
@@ -29,6 +31,7 @@ Dominio\Cliente.class
 Negocio\ProductoNegocioInterfaz.class
 Dominio\Empleado.class
 Negocio\DepartamentoNegocioInterfaz.class
+Web\Eliminar\EliminarLab.class
 Negocio\LaboratorioService.class
 Dominio\Producto.class
 Negocio\LaboratorioNegocioInterfaz.class

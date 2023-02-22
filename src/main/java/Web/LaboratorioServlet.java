@@ -71,25 +71,12 @@ public class LaboratorioServlet extends HttpServlet {
                 case "insertar":
                     this.InsertarLaboratorio(request, response);
                     break;
-                case "editar":
-                    //this.eliminarCliente(request, response);
-                    break;
-                case "eliminar":
-                    //this.EliminarCliente(request, response);
-                    break;
                 case "listarLaboratorios":
                     List<Laboratorio> laboratorios = laboratorioNegocioInterfaz.listarLaboratorios();
                     System.out.println("laboratorios: " + laboratorios);
                     request.setAttribute("laboratorios", laboratorios);
                     request.getRequestDispatcher("/listadoLaboratorios.jsp").forward(request,
                             response);
-                    break;
-                case "miCuenta":
-                    Laboratorio laboratorio = (Laboratorio) request.getSession().getAttribute("cliente");
-                    laboratorioNegocioInterfaz.encontrarLaboratorioPorID(laboratorio);
-                    System.out.println("laboratorio: " + laboratorio);
-                    request.setAttribute("laboratorio", laboratorio);
-                    response.sendRedirect("listadoLaboratorios.jsp");
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -102,18 +89,9 @@ public class LaboratorioServlet extends HttpServlet {
     private void accionDefault(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // 1. Obtenemos el listado de los cliente
-        List<Laboratorio> laboratorios = laboratorioNegocioInterfaz.listarLaboratorios();
-        request.getRequestDispatcher("/cliente.jsp").forward(request,
+        request.getRequestDispatcher("/Laboratorio?accion=listarLaboratorios").forward(request,
                 response);
-
-        // 2. Definimos un objeto session para compartir nuestro atributos en un contexto más amplio
         HttpSession sesion = request.getSession();
-
-        // 3. Compartir en el nuevo alcance los atributos
-        sesion.setAttribute("laboratorios", laboratorios);
-        sesion.setAttribute("totalLaboratorios", laboratorios.size());
-        //sesion.setAttribute("saldoTotal", calcularTotal(clientes));
     }
 
     protected void InsertarLaboratorio(HttpServletRequest request, HttpServletResponse response)
@@ -127,7 +105,7 @@ public class LaboratorioServlet extends HttpServlet {
         laboratorioNegocioInterfaz.registrarLaboratorio(laboratorio);
         System.out.println("registrosModificados = " + laboratorio);
         //4. Redirigimos a la acción por defecto
-        request.getRequestDispatcher("/index.jsp").forward(request,
+        request.getRequestDispatcher("/Laboratorio?accion=listarLaboratorios").forward(request,
                 response);
     }
 

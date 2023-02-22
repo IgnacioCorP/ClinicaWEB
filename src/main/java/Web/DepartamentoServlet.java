@@ -5,6 +5,7 @@
  */
 package Web;
 
+import Dominio.Cliente;
 import Dominio.Departamento;
 import Dominio.Laboratorio;
 import Negocio.DepartamentoNegocioInterfaz;
@@ -39,20 +40,15 @@ public class DepartamentoServlet extends HttpServlet {
                 case "insertar":
                     this.InsertarDepartamento(request, response);
                     break;
-                case "editar":
-                    // this.editarCliente(request, response);
-                    break;
-                case "eliminar":
-                    //this.EliminarCliente(request, response);
-                    break;
+
                 case "listarDepartamentos":
                     List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
                     System.out.println("departamentos: " + departamentos);
-                   // Ponemos usuarios en un alcance
+                    // Ponemos usuarios en un alcance
                     request.setAttribute("departamentos", departamentos);
                     request.getRequestDispatcher("/listadoDepartamentos.jsp").forward(request,
                             response);
-                   
+
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -72,23 +68,15 @@ public class DepartamentoServlet extends HttpServlet {
                 case "insertar":
                     this.InsertarDepartamento(request, response);
                     break;
-                case "editar":
-                    //this.eliminarCliente(request, response);
-                    break;
-                case "eliminar":
-                    //this.EliminarCliente(request, response);
-                    break;
                 case "listarDepartamentos":
-                   List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
+                    List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
                     System.out.println("departamentos: " + departamentos);
-                   // Ponemos usuarios en un alcance
+                    // Ponemos usuarios en un alcance
                     request.setAttribute("departamentos", departamentos);
                     request.getRequestDispatcher("/listadoDepartamentos.jsp").forward(request,
                             response);
                     break;
-                case "miCuenta":
 
-                    break;
                 default:
                     this.accionDefault(request, response);
             }
@@ -100,7 +88,7 @@ public class DepartamentoServlet extends HttpServlet {
     private void accionDefault(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.getRequestDispatcher("/departamentos.jsp").forward(request,
+        request.getRequestDispatcher("/Departamento?accion=listarDepartamentos").forward(request,
                 response);
 
         HttpSession sesion = request.getSession();
@@ -117,7 +105,7 @@ public class DepartamentoServlet extends HttpServlet {
         departamentoNegocioInterfaz.registrarDepartamento(departamento);
         System.out.println("registrosModificados = " + departamento);
         //4. Redirigimos a la acción por defecto
-        request.getRequestDispatcher("/index.jsp").forward(request,
+        request.getRequestDispatcher("/Departamento?accion=listarDepartamentos").forward(request,
                 response);
     }
 

@@ -114,18 +114,30 @@ public class ClienteServlet extends HttpServlet {
 
                     List<Cliente> usuariosLogin = clienteNegocioInterfaz.listarClientes();
                     System.out.println(usuariosLogin);
-                    for (int i = 0; i < usuariosLogin.size(); i++) {
 
+                    boolean encontrado = false;
+
+                    for (int i = 0; i < usuariosLogin.size(); i++) {
                         String correoUsuario = usuariosLogin.get(i).getEmail();
                         String contraUsuario = usuariosLogin.get(i).getClave();
+
                         if (correoUsuario.equals(email) && contraUsuario.equals(contrasena)) {
                             System.out.println("conectado");
                             correoUsuario = usuariosLogin.get(i).getEmail();
                             sesion.setAttribute("Email", correoUsuario);
                             System.out.println(usuariosLogin.get(i));
                             response.sendRedirect("empleado.jsp");
+                            encontrado = true;
+                            break;
                         }
-                    }            
+                    }
+
+                    if (!encontrado) {
+                        request.setAttribute("mensajeError", "Las credenciales de inicio de sesión no son correctas. Por favor, inténtelo de nuevo.");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("IniciarSesion.jsp");
+                        dispatcher.forward(request, response);
+                    }
+
                     break;
 
                 case "listarClientes":

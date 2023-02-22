@@ -18,7 +18,7 @@
     </head>
 
     <body>
-      <!--BARRA DE NAVEGACIÓN-->
+        <!--BARRA DE NAVEGACIÓN-->
         <div class="container-fluid ">
             <nav class="navbar navbar-expand-lg navbar-light " style="background: transparent;">
                 <div class="container-fluid">
@@ -32,7 +32,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link" href="index.jsp">INICIO</a>
                             </li>
@@ -61,7 +61,7 @@
         <div class="container-fluid" style="background-image: url('imgP/empleadofondo.jpg'); background-repeat: no-repeat;  background-size: 100% 100%;">
             <div class="col-sm-12 col-md-4 d-flex justify-content-center pt-5 pb-5" style="margin-left: 600px;">
                 <div class="bg-white p-5 rounded-5 text-secondary shadow d-flex justify-content-center" style="width: 25rem ">
-                    <form method="post" action="ClienteServlet?accion=Login"">
+                    <form method="post" action="ClienteServlet?accion=Login">
                         <div class="d-flex justify-content-center">
                             <img src="assets/login-icon.svg" alt="login-icon" style="height: 7rem" />
                         </div>
@@ -81,14 +81,18 @@
                             </div>
                             <input class="form-control bg-light" type="password" name="Clave" placeholder="Password" />
                         </div>
-                        
+                        <% if (request.getAttribute("mensajeError") != null) {%>
+                        <p style="color: red;"><%= request.getAttribute("mensajeError")%></p>
+                        <% }%>
+
+
                         <div class="btn  text-black w-100 mt-4 fw-semibold shadow-sm">
                             <button type="submit" class="btn btn-primary" style="align-items: center; justify-content: center;">Login</button>
                         </div>
 
                         <div class="d-flex gap-1 justify-content-center mt-1">
                             <div>¿No tienes cuenta?</div>
-                                <a href="REGISTRO.jsp">REGISTRATE</a>
+                            <a href="REGISTRO.jsp">REGISTRATE</a>
                         </div>
                         <div class="p-3">
                             <div class="border-bottom text-center" style="height: 0.9rem">

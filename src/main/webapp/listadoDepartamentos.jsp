@@ -7,9 +7,10 @@
         <title>Listado de Laboratorios</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="stylesheet" href="lb/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lb/fontawesome-free-6.2.0-web/css/all.min.css">
     </head>
     <body>
-     <!--BARRA DE NAVEGACIÓN-->
+        <!--BARRA DE NAVEGACIÓN-->
         <div class="container-fluid ">
             <nav class="navbar navbar-expand-lg navbar-light " style="background: transparent;">
                 <div class="container-fluid">
@@ -39,7 +40,7 @@
                             <li class="nav-item ">
                                 <a class="nav-link" href="Departamento?accion=listarDepartamentos" id="navbarDropdown" role="button" aria-expanded="false">DEPARTAMENTOS</a>
                             </li>
-                             <li class="nav-item ">
+                            <li class="nav-item ">
                                 <a class="nav-link" href="registrarDepartamentos.jsp" id="navbarDropdown" role="button" aria-expanded="false">AÑADIR DEPARTAMENTO</a>
                             </li>
 
@@ -58,18 +59,24 @@
             <table class="table">
                 <thead>
                     <tr>
-                        
+
+                        <th scope="col">ID</th>
                         <th scope="col">NOMBRE</th>
                         <th scope="col">DESCRIPCIÓN</th>
-                       
+                        <th scope="col">ELIMINAR</th>
+
+
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach items="${departamentos}" var="departamento" >
                         <tr>
+                            
+                            <td>${departamento.getIDdep()}</td>
                             <td>${departamento.getNombre()}</td>
                             <td>${departamento.getDescripcion()}</td>
-                            
+                            <td ><a class="text-dark" href="Eliminar?eliminar=${departamento.getIDdep()}"><i class="fa-solid fa-trash"></i></a></td>
+
                         </tr>
                     </c:forEach>
                 </tbody>

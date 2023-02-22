@@ -65,6 +65,8 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Modificar</th>
+                        <th scope="col">Eliminar</th>
 
                     </tr>
                 </thead>
@@ -75,6 +77,8 @@
                         <td>${cliente.nombre}</td>
                         <td>${cliente.apellido}</td>
                         <td>${cliente.email}</td>
+                        <td><a class="text-dark" href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td ><a class="text-dark" href="Eliminar?eliminar=${cliente.nif}"><i class="fa-solid fa-trash"></i></a></td>
 
                     </tr>
                 </c:forEach>
