@@ -5,6 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%  String msj = "" ;
+    if (request.getAttribute("mensajeError") != null) {
+       msj = (String)request.getAttribute("mensajeError");
+    }
+%> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,7 +86,7 @@
                             </div>
                             <input class="form-control bg-light" type="password" name="Clave" placeholder="Password" />
                         </div>
-                        
+                        <p style="color: red;"><%=msj%></p>
                         <div class="btn  text-black w-100 mt-4 fw-semibold shadow-sm">
                             <button type="submit" class="btn btn-primary" style="align-items: center; justify-content: center;">Login</button>
                         </div>

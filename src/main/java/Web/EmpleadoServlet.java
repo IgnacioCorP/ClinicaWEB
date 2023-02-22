@@ -33,8 +33,8 @@ public class EmpleadoServlet extends HttpServlet {
     @Inject
     // Ahora definimos nuestra variable
     EmpleadoNegocioInterfaz empleadoNegocioInterfaz; // Cremos una instancia de nuestra if local
-    
-     @Inject
+
+    @Inject
     // Ahora definimos nuestra variable
     ClienteNegocioInterfaz clienteNegocioInterfaz;
 
@@ -74,16 +74,20 @@ public class EmpleadoServlet extends HttpServlet {
                             correoUsuario = usuariosLogin.get(i).getEmail();
                             sesion.setAttribute("Email", correoUsuario);
                             System.out.println(usuariosLogin.get(i));
-                            response.sendRedirect("empleado.jsp");
+                            request.getRequestDispatcher("empleado.jsp").forward(request, response);
+                            return;
                         }
                     }
+
+                    request.setAttribute("mensajeError", "Email o contraseña incorrectos");
+                    request.getRequestDispatcher("LoginAdmin.jsp").forward(request, response);                
 
                     break;
 
                 case "listarClientes":
                     List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
                     System.out.println("clientes: " + clientes);
-                    request.setAttribute("clientes", clientes);                
+                    request.setAttribute("clientes", clientes);
                     /*request.getRequestDispatcher("/listadoClientes.jsp").forward(request,
                 response);*/
                     break;
@@ -103,7 +107,7 @@ public class EmpleadoServlet extends HttpServlet {
         HttpSession sesion = request.getSession();
 
         if (accion != null) {
-            
+
             switch (accion) {
                 case "insertar":
                     this.InsertarEmpleado(request, response);
@@ -141,9 +145,9 @@ public class EmpleadoServlet extends HttpServlet {
                 case "listarClientes":
                     List<Cliente> clientes = clienteNegocioInterfaz.listarClientes();
                     System.out.println("clientes: " + clientes);
-                    request.setAttribute("clientes", clientes);                
+                    request.setAttribute("clientes", clientes);
                     request.getRequestDispatcher("/listadoClientes.jsp").forward(request,
-                response);
+                            response);
                     break;
                 case "miCuenta":
 
@@ -174,8 +178,8 @@ public class EmpleadoServlet extends HttpServlet {
         String telefono = request.getParameter("Telefono");
         String email = request.getParameter("Email");
         String clave = request.getParameter("Clave");
-        int departamento =  Integer.parseInt(request.getParameter("laboratorio"));
-        int laboratorio =  Integer.parseInt(request.getParameter("departamento"));
+        int departamento = Integer.parseInt(request.getParameter("laboratorio"));
+        int laboratorio = Integer.parseInt(request.getParameter("departamento"));
 
         // Crear una nueva instancia de Empleado
         Empleado empleado = new Empleado(new EmpleadoPK(nif, laboratorio, departamento), nombre, apellido, telefono, email, clave);

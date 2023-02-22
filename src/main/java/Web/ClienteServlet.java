@@ -64,9 +64,13 @@ public class ClienteServlet extends HttpServlet {
                             correoUsuario = usuariosLogin.get(i).getEmail();
                             sesion.setAttribute("Email", correoUsuario);
                             System.out.println(usuariosLogin.get(i));
-                            response.sendRedirect("empleado.jsp");
+                            request.getRequestDispatcher("empleado.jsp").forward(request, response);
+                            return;
                         }
                     }
+
+                    request.setAttribute("mensajeError", "Email o contraseña incorrectos");
+                    request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
 
                     break;
 
