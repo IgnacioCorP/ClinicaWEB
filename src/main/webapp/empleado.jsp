@@ -6,6 +6,13 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    String user = "";
+    HttpSession sesion = request.getSession();
+    if (sesion.getAttribute("Email") != null) {
+        user =(String) sesion.getAttribute("Email");
+    }
+%>
 <html lang="en">
 
     <head>
@@ -48,10 +55,17 @@
                             <li class="nav-item ">
                                 <a class="nav-link" href="Departamento?accion=listarDepartamentos" id="navbarDropdown" role="button" aria-expanded="false">DEPARTAMENTOS</a>
                             </li>
+                           
 
                         </ul>
                         <div class="text-center">
                             <a href="index.jsp" class="btn btn-primary">CERRAR SESIÓN</a>
+                        </div>
+                        <div class="text-center">
+                            <a href="cargarModifica?clase=usuario&usr=<%=user%>" class="btn btn-primary">MI CUENTA</a>
+                        </div>
+                        <div class="text-center">
+                            <a href="cargarModifica?clase=usuario&usr=<%=user%>" class="btn btn-primary"> <%=user%></a>
                         </div>
                     </div>
                 </div>

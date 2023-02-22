@@ -54,10 +54,7 @@ public class ProductosServlet extends HttpServlet {
                     //this.EliminarCliente(request, response);
                     break;
                 case "listarProductos":
-                    List<Producto> productos = productoNegocioInterfaz.listarProductos();
-                    System.out.println("productos: " + productos);
-                    request.setAttribute("productos", productos);
-                    //request.getRequestDispatcher("productosempleado.jsp").forward(request, response);
+                    this.ListarProductos(request, response);
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -105,9 +102,8 @@ public class ProductosServlet extends HttpServlet {
                     //this.EliminarCliente(request, response);
                     break;
                 case "listarProductos":
-                    List<Producto> productos = productoNegocioInterfaz.listarProductos();
-                    request.setAttribute("productos", productos);
-                    //request.getRequestDispatcher("/productosempleado.jsp").forward(request, response);
+                    this.ListarProductos(request, response);
+
                     break;
 
                 default:
@@ -147,6 +143,15 @@ public class ProductosServlet extends HttpServlet {
         // Redirigir al usuario a la página de lista de productos
         request.getRequestDispatcher("/index.jsp").forward(request,
                 response);
+    }
+
+    private void ListarProductos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+     
+        List<Producto> productos = productoNegocioInterfaz.listarProductos();
+        System.out.println("productos: " + productos);
+        request.setAttribute("productos", productos);
+        request.getRequestDispatcher("productosempleado.jsp").forward(request, response);
     }
 
 }
