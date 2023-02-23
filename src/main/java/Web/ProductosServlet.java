@@ -107,8 +107,8 @@ public class ProductosServlet extends HttpServlet {
     private void insertarProducto(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nombre = request.getParameter("nombre");
-        double precio = Double.parseDouble(request.getParameter("precio"));
+        String nombre = request.getParameter("Nombre");
+        double precio = Double.parseDouble(request.getParameter("Precio"));
         Part imagenPart = request.getPart("imagen");
 
         // Convertir la imagen a un array de bytes

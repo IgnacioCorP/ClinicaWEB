@@ -27,7 +27,7 @@ public class cargarModifica extends HttpServlet {
 
     @Inject
     // Ahora definimos nuestra variable
-    EmpleadoNegocioInterfaz empleadoNegocioInterfaz;
+    EmpleadoNegocioInterfaz empleadoNegocioInterfaz; 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -100,9 +100,9 @@ public class cargarModifica extends HttpServlet {
     private void modificarUsuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
-        String u = (String) sesion.getAttribute("Email");
-        Empleado usuario = new Empleado(u);
-        usuario = empleadoNegocioInterfaz.econtrarEmpleadoPorEmail(usuario);
+        String u = (String) sesion.getAttribute("Nif");
+        Empleado usuario = new Empleado(new EmpleadoPK(u));
+        usuario = empleadoNegocioInterfaz.encontrarEmpleadoPorID(usuario);
         request.setAttribute("usuario", usuario);
         request.getRequestDispatcher("ActualizarCuenta.jsp").forward(request, response);
 

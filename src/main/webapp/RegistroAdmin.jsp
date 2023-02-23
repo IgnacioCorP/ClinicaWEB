@@ -163,10 +163,8 @@
                         </select>
                     </div>
 
-                    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
                     <input type="hidden" name="oculto" value="1">
                     <input class="botons" type="submit" value="Registrar">
-                    <p><a href="IniciarSesion.jsp">¿Ya tengo Cuenta?</a></p>
                 </form>
             </section>
         </div>

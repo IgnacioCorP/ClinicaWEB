@@ -53,7 +53,6 @@ public class ListasServelt extends HttpServlet {
 
         List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
         request.setAttribute("departamentos", departamentos);
-
         request.getRequestDispatcher("/RegistroAdmin.jsp").forward(request, response);
     }
 

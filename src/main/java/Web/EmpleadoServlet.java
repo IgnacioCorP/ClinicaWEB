@@ -51,7 +51,7 @@ public class EmpleadoServlet extends HttpServlet {
                     this.InsertarEmpleado(request, response);
                     break;
                 case "editar":
-                    //this.modificarUsuario(request, response);
+                    this.modificarUsuario(request, response);
                     break;
                 case "eliminar":
                     // this.EliminarCliente(request, response);
@@ -212,34 +212,20 @@ public class EmpleadoServlet extends HttpServlet {
                 response);
     }
 
-    
-
-    /* protected void EliminarCliente(HttpServletRequest request, HttpServletResponse response)
+    private void modificarUsuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String nif = request.getParameter("Nif");
-        Cliente cliente = new Cliente(nif);
-        clienteNegocioInterfaz.eliminarCliente(cliente);
-        // 4. Redirigimos al flujo de default
-        this.accionDefault(request, response);
+        String nombre = request.getParameter("Nombre");
+        String apellido = request.getParameter("Apellido");
+        String telefono = request.getParameter("Telefono");
+        String email = request.getParameter("Email");
+        String clave = request.getParameter("Clave");
+        int departamento = Integer.parseInt(request.getParameter("laboratorio"));
+        int laboratorio = Integer.parseInt(request.getParameter("departamento"));
+
+        Empleado empleado = new Empleado(new EmpleadoPK(nif, laboratorio, departamento), nombre, apellido, telefono, email, clave);
+        empleadoNegocioInterfaz.modificarEmpleado(empleado);
+        request.getRequestDispatcher("listadoEmpleados.jsp").forward(request,
+                response);
     }
-
-    private void editarCliente(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        // 1. Recuperamos los parámetros
-        int Nif = Integer.parseInt(request.getParameter("Nif"));
-
-        // 2. Ahora invocamos el método buscar cliente de acceso a datos
-        Cliente cliente = new Cliente();
-
-        // 3. Ahora compartimos el cliente en el alcance de request
-        request.setAttribute("cliente", cliente);
-
-        String jspeditar = "/editarCliente.jsp";
-
-        // 4. Redirigimos y propagamos
-        request.getRequestDispatcher(jspeditar).forward(request, response);
-
-    }*/
 }
