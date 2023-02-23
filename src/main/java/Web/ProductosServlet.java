@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -22,7 +23,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import org.apache.logging.log4j.core.util.IOUtils;
+import org.apache.commons.io.IOUtils;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  *
@@ -73,27 +76,8 @@ public class ProductosServlet extends HttpServlet {
         if (accion != null) {
             switch (accion) {
                 case "insertar":
-                    // Obtener los detalles del nuevo producto del formulario
-                    String Nombre = request.getParameter("Nombre");
-                    double Precio = Double.parseDouble(request.getParameter("Precio"));
-                    Part imagenPart = request.getPart("imgP");
-                    InputStream imagenStream = imagenPart.getInputStream();
-                    ByteArrayOutputStream imagenBytes = new ByteArrayOutputStream();
-                    byte[] buffer = new byte[1000000000];
-                    int bytesRead;
-                    while ((bytesRead = imagenStream.read(buffer)) != -1) {
-                        imagenBytes.write(buffer, 0, bytesRead);
-                    }
-                    byte[] imgP = imagenBytes.toByteArray();
+                    this.insertarProducto(request, response);
 
-                    // Crear un objeto Producto con los detalles ingresados
-                    Producto nuevoProducto = new Producto(Nombre, Precio, imgP);
-
-                    // Insertar el nuevo producto en la base de datos a través del componente de negocio
-                    productoNegocioInterfaz.registrarProducto(nuevoProducto);
-                    // Redirigir al usuario a la página de lista de productos
-                    request.getRequestDispatcher("/index.jsp").forward(request,
-                            response);
                     break;
                 case "editar":
                     // this.editarCliente(request, response);
@@ -122,32 +106,27 @@ public class ProductosServlet extends HttpServlet {
 
     private void insertarProducto(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Obtener los detalles del nuevo producto del formulario
-        String Nombre = request.getParameter("Nombre");
-        double Precio = Double.parseDouble(request.getParameter("Precio"));
-        Part imagenPart = request.getPart("imgP");
-        InputStream imagenStream = imagenPart.getInputStream();
-        ByteArrayOutputStream imagenBytes = new ByteArrayOutputStream();
-        byte[] buffer = new byte[1000000000];
-        int bytesRead;
-        while ((bytesRead = imagenStream.read(buffer)) != -1) {
-            imagenBytes.write(buffer, 0, bytesRead);
-        }
-        byte[] imgP = imagenBytes.toByteArray();
 
-        // Crear un objeto Producto con los detalles ingresados
-        Producto nuevoProducto = new Producto(Nombre, Precio, imgP);
+        String nombre = request.getParameter("nombre");
+        double precio = Double.parseDouble(request.getParameter("precio"));
+        Part imagenPart = request.getPart("imagen");
 
-        // Insertar el nuevo producto en la base de datos a través del componente de negocio
-        productoNegocioInterfaz.registrarProducto(nuevoProducto);
+        // Convertir la imagen a un array de bytes
+        InputStream inputStream = imagenPart.getInputStream();
+        byte[] imagenBytes = IOUtils.toByteArray(inputStream);
+
+        // Crear el objeto Producto con los datos obtenidos
+        Producto producto = new Producto(nombre, precio, imagenBytes);
+
+        // Llamar al método insertarProducto del componente EJB
+        productoNegocioInterfaz.registrarProducto(producto);
         // Redirigir al usuario a la página de lista de productos
-        request.getRequestDispatcher("/index.jsp").forward(request,
-                response);
+        request.getRequestDispatcher("productosempleado.jsp").forward(request, response);
     }
 
     private void ListarProductos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+
         List<Producto> productos = productoNegocioInterfaz.listarProductos();
         System.out.println("productos: " + productos);
         request.setAttribute("productos", productos);

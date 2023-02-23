@@ -5,8 +5,11 @@
  */
 package Datos;
 
-
 import Dominio.Producto;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,18 +21,16 @@ import javax.persistence.Query;
  * @author Alumno Mañana
  */
 @Stateless
-public class ProductoDao implements ProductoInterfaz{
-      // El EJB se encarga de forma automática de hacer las transacciones.
-    
+public class ProductoDao implements ProductoInterfaz {
+    // El EJB se encarga de forma automática de hacer las transacciones.
+
     // Ahora inyectamos la unidad de persistencia a través del API de JPA
     // Simplemente tenemos que usar la anotación e indicar el nombre de nuestra
     // unidad de persistencia
-    @PersistenceContext(unitName="ClinicaWebPU")
+    @PersistenceContext(unitName = "ClinicaWebPU")
     EntityManager em;
-    
-    // Con este objeto de em ya podemos interactuar con nuestra BD
-    
 
+    // Con este objeto de em ya podemos interactuar con nuestra BD
     @Override
     public List<Producto> findAllProductos() {
         // Creamos un NamedQuery, y el listado lo leemos con getResultList
@@ -55,17 +56,19 @@ public class ProductoDao implements ProductoInterfaz{
         return (Producto) query.getSingleResult();
     }
 
+    
+
     @Override
     public void insertProducto(Producto producto) {
         em.persist(producto);
     }
 
     @Override
-    public void updateProducto(Producto producto){
+    public void updateProducto(Producto producto) {
         // Sincroniza cualquier modificamos que hayamos hecho de la persona en la BD
         em.merge(producto);
     }
-    
+
     @Override
     public void deleteProducto(Producto producto) {
         // 1. actualizamos el estado del objeto en la base de datos => se borra.

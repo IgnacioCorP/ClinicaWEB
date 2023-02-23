@@ -4,8 +4,12 @@
     Author     : Alumno Mañana
 --%>
 
+<%@page import="Dominio.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    Empleado usuario = (Empleado) request.getAttribute("usuario");
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -74,29 +78,41 @@
                             <h5>Actualizar cuenta</h5>
                         </div>
                         <div class="card-body">
-                            <form action="actualizar-cuenta.jsp" method="post">
+                            <form action="Empleado?accion=editar" method="post">
                                 <div class="form-group">
                                     <label for="nif">NIF:</label>
-                                    <input type="text" id="nif" name="nif" class="form-control" value="<%= request.getParameter("Nif")%>">
+                                    <input type="text" id="nif" name="nif" class="form-control" value="<%= usuario.getEmpleadoPK().getNif()%>">
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" id="nombre" name="nombre" class="form-control" value="<%= request.getParameter("Nombre")%>">
+                                    <input type="text" id="nombre" name="nombre" class="form-control" value="<%= usuario.getNombre()%>">
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido">Apellido:</label>
-                                    <input type="text" id="apellido" name="apellido" class="form-control" value="<%= request.getParameter("Apellido")%>">
+                                    <input type="text" id="apellido" name="apellido" class="form-control" value="<%= usuario.getApellido()%>">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email:</label>
-                                    <input type="email" id="email" name="email" class="form-control" value="<%= request.getParameter("Email")%>">
+                                    <input type="email" name="email" class="form-control" value="<%= usuario.getEmail()%>">
                                 </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email"  name="email" class="form-control" value="<%= usuario.getEmail()%>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Departamento</label>
+                                    <input type="text" name="departamento" class="form-control" value="<%= usuario.getDepartamento().getNombre() %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Laboratorio</label>
+                                    <input type="text"  name="laboratorio" class="form-control" value="<%= usuario.getLaboratorio().getNombresede() %>">
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="clave">Clave:</label>
                                     <input type="password" id="clave" name="clave" class="form-control">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Actualizar</button>
-                                <a class="text-dark" href="EliminarEmp?eliminar=${empleado.nif}"><i class="fa-solid fa-trash"></i></a>
                             </form>
                         </div>
                     </div>

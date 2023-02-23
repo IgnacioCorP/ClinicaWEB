@@ -117,6 +117,10 @@ public class Empleado implements Serializable {
         this.departamento = departamento;
         this.laboratorio = laboratorio;
     }
+
+    public Empleado(String email) {
+        this.email = email;
+    }
     
     
     public Empleado(String nif, int laboratorioIDlab, int departamentoIDdep) {

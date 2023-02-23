@@ -51,7 +51,7 @@ public class EmpleadoServlet extends HttpServlet {
                     this.InsertarEmpleado(request, response);
                     break;
                 case "editar":
-                    // this.editarCliente(request, response);
+                    //this.modificarUsuario(request, response);
                     break;
                 case "eliminar":
                     // this.EliminarCliente(request, response);
@@ -211,6 +211,8 @@ public class EmpleadoServlet extends HttpServlet {
         request.getRequestDispatcher("listadoEmpleados.jsp").forward(request,
                 response);
     }
+
+    
 
     /* protected void EliminarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

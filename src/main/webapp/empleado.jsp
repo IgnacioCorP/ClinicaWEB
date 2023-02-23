@@ -62,10 +62,10 @@
                             <a href="index.jsp" class="btn btn-primary">CERRAR SESIÓN</a>
                         </div>
                         <div class="text-center">
-                            <a href="cargarModifica?clase=usuario&usr=<%=user%>" class="btn btn-primary">MI CUENTA</a>
+                            <a href="cargarModifica?clase=usuario&Email=<%=user%>" class="btn btn-primary">MI CUENTA</a>
                         </div>
                         <div class="text-center">
-                            <a href="cargarModifica?clase=usuario&usr=<%=user%>" class="btn btn-primary"> <%=user%></a>
+                            <a href="cargarModifica?clase=usuario&Email=<%=user%>" class="btn btn-primary"> <%=user%></a>
                         </div>
                     </div>
                 </div>

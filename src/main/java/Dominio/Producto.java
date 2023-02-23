@@ -7,25 +7,22 @@ package Dominio;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.servlet.http.Part;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -33,6 +30,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "producto")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
     @NamedQuery(name = "Producto.findByIDpro", query = "SELECT p FROM Producto p WHERE p.iDpro = :iDpro"),
@@ -64,11 +62,10 @@ public class Producto implements Serializable {
     @Lob
     @Column(name = "imgP")
     private byte[] imgP;
-    @ManyToMany(mappedBy = "productoList")
-    private List<Laboratorio> laboratorioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
-    private List<Compra> compraList;
-
+    
+    @Transient 
+    private String base64;
+    
     public Producto() {
     }
 
@@ -89,9 +86,12 @@ public class Producto implements Serializable {
         this.imgP = imgP;
     }
 
-    public Producto(String nombre, double precio, Part imgPart) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Producto(String nombre, double precio, String base64) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.base64 = base64;
     }
+    
 
     
     public Integer getIDpro() {
@@ -134,22 +134,6 @@ public class Producto implements Serializable {
         this.imgP = imgP;
     }
 
-    public List<Laboratorio> getLaboratorioList() {
-        return laboratorioList;
-    }
-
-    public void setLaboratorioList(List<Laboratorio> laboratorioList) {
-        this.laboratorioList = laboratorioList;
-    }
-
-    public List<Compra> getCompraList() {
-        return compraList;
-    }
-
-    public void setCompraList(List<Compra> compraList) {
-        this.compraList = compraList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -173,10 +157,6 @@ public class Producto implements Serializable {
     @Override
     public String toString() {
         return "Dominio.Producto[ iDpro=" + iDpro + " ]";
-    }
-
-    public void setImagen(Part imagenPart) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -83,7 +83,7 @@
     </style>
 
     <body>
-         <!--BARRA DE NAVEGACIÓN-->
+        <!--BARRA DE NAVEGACIÓN-->
         <div class="container-fluid ">
             <nav class="navbar navbar-expand-lg navbar-light " style="background: transparent;">
                 <div class="container-fluid">
@@ -128,13 +128,13 @@
         <div class="row  d-flex justify-content-center " style="background-image: url('imgP/fondoindex.jpg'); background-repeat: no-repeat;  background-size: 100% 100%; padding-top: 100px; padding-bottom: 100px; height:790px;">
             <div class="form-register col sm-12 col-md-4">
                 <div class="container text-center">
-                    <form action="ProductosServlet?accion=insertar" method="get"  enctype="multipart/form-data">
+                    <form action="Productos?accion=insertar" method="POST"  enctype="multipart/form-data">
                         <h4>REGISTRAR PRODUCTO</h4>
-                        <input class="controls" type="text" name="Nombre" placeholder="Nombre" >
+                        <input class="controls" type="text" name="Nombre" placeholder="nombre" >
 
-                        <input class="controls" type="text" name="Precio" placeholder="PRECIO" >
+                        <input class="controls" type="text" name="Precio" placeholder="precio" >
 
-                        <input type="file" class="controls" style="color: white;"  name="imgP" ><br><br>
+                        <input type="file" class="controls" style="color: white;"  name="imagen" ><br><br>
 
                         <input type="submit" value="SUBIR PRODUCTO">
                     </form>

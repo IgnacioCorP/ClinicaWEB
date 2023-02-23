@@ -48,8 +48,8 @@ public class EmpleadoDao implements EmpleadoInterfaz {
     public Empleado findEmpleadoByEmail(Empleado empleado) {
         // En este caso no vamos a usar un NamedQuery, que podríamos haber 
         // agregado en la Entidad de Persona sino que vamos a incluirlo directamente.
-        Query query = em.createQuery("from Empleado p where p.Email = :Email");
-        query.setParameter("Email", empleado.getEmail());
+        Query query = em.createQuery("Empleado.findByEmail");
+        query.setParameter("email", empleado.getEmail());
         // Y ahroa sólo esperamos un resultado, porque el email debe de ser único
         // sino lo hemos definido así lo modificamos en nuestra tabla como unique
         return (Empleado) query.getSingleResult();
