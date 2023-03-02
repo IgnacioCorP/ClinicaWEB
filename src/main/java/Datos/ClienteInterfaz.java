@@ -31,4 +31,6 @@ public interface ClienteInterfaz {
     public void deleteCliente(Cliente cliente);
 
     public Cliente loginCliente(String email, String password);
+
+    public List<Cliente> buscadorCliente(String bus);
 }

@@ -8,7 +8,44 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="stylesheet" href="lb/css/bootstrap.min.css">
         <link rel="stylesheet" href="lb/fontawesome-free-6.2.0-web/css/all.min.css">
-
+        <style>
+            .searchbar {
+                margin-bottom: auto;
+                margin-top: auto;
+                height: 60px;
+                background-color: #353b48;
+                border-radius: 30px;
+                padding: 10px;
+            }
+            .search_input {
+                color: white;
+                border: 0;
+                outline: 0;
+                background: none;
+                width: 0;
+                caret-color: transparent;
+                line-height: 40px;
+                padding: 0 10px;
+                width: 450px;
+                caret-color: red;
+            }
+            .searchbar .search_icon:hover {
+                color: white;
+                background: #e74c3c;
+            }
+            .search_icon {
+                height: 40px;
+                width: 40px;
+                float: right;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                text-decoration: none;
+                background: white;
+                color: #e74c3c;
+            }
+        </style>
     </head>
     <body>
         <!--BARRA DE NAVEGACIÓN-->
@@ -52,6 +89,16 @@
             </nav>
         </div>
         <!--FIN BARRA DE NAVEGACIÓN -->
+        <div class="container h-100 py-4">
+            <div class="d-flex justify-content-center h-100">
+                <div class="searchbar ">
+                    <form method="post" action="ClienteServlet?accion=buscar">
+                        <input class="search_input " type="text" name="bus" placeholder="Buscar...">
+                        <button class="search_icon"><i class='fas fa-search'></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="container-fluid col-sm-12 col-md-8">
             <h1 style="justify-content: center; display: flex; color: blue; padding-top: 10px">CLIENTES</h1>
             <table class="table">

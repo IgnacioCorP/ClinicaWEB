@@ -28,5 +28,7 @@ public interface EmpleadoNegocioInterfaz {
     public void modificarEmpleado(Empleado empleado);
 
     public void eliminarEmpleado(Empleado empleado);
+
+  
     
 }

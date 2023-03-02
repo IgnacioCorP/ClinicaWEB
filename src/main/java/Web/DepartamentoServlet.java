@@ -26,11 +26,11 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "DepartamentoServlet", urlPatterns = {"/Departamento"})
 public class DepartamentoServlet extends HttpServlet {
-
+    
     @Inject
     // Ahora definimos nuestra variable
     DepartamentoNegocioInterfaz departamentoNegocioInterfaz;
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,7 +40,7 @@ public class DepartamentoServlet extends HttpServlet {
                 case "insertar":
                     this.InsertarDepartamento(request, response);
                     break;
-
+                
                 case "listarDepartamentos":
                     List<Departamento> departamentos = departamentoNegocioInterfaz.listarDepartamentos();
                     System.out.println("departamentos: " + departamentos);
@@ -48,7 +48,10 @@ public class DepartamentoServlet extends HttpServlet {
                     request.setAttribute("departamentos", departamentos);
                     request.getRequestDispatcher("/listadoDepartamentos.jsp").forward(request,
                             response);
-
+                    
+                    break;
+                case "buscar":
+                    this.buscarDepartamento(request, response);
                     break;
                 default:
                     this.accionDefault(request, response);
@@ -57,11 +60,11 @@ public class DepartamentoServlet extends HttpServlet {
             //this.accionDefault(request, response);
         }
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String accion = request.getParameter("accion");
         if (accion != null) {
             switch (accion) {
@@ -76,7 +79,7 @@ public class DepartamentoServlet extends HttpServlet {
                     request.getRequestDispatcher("/listadoDepartamentos.jsp").forward(request,
                             response);
                     break;
-
+                
                 default:
                     this.accionDefault(request, response);
             }
@@ -84,23 +87,23 @@ public class DepartamentoServlet extends HttpServlet {
             //this.accionDefault(request, response);
         }
     }
-
+    
     private void accionDefault(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         request.getRequestDispatcher("/Departamento?accion=listarDepartamentos").forward(request,
                 response);
-
+        
         HttpSession sesion = request.getSession();
-
+        
     }
-
+    
     protected void InsertarDepartamento(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String Nombre = request.getParameter("Nombre");
         String Descripcion = request.getParameter("Descripcion");
-
+        
         Departamento departamento = new Departamento(Nombre, Descripcion);
         departamentoNegocioInterfaz.registrarDepartamento(departamento);
         System.out.println("registrosModificados = " + departamento);
@@ -108,5 +111,15 @@ public class DepartamentoServlet extends HttpServlet {
         request.getRequestDispatcher("/Departamento?accion=listarDepartamentos").forward(request,
                 response);
     }
-
+    
+    private void buscarDepartamento(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String bus = request.getParameter("bus");
+        List<Departamento> departamentos = departamentoNegocioInterfaz.buscadorDepartamento(bus);
+        System.out.println("departamentos: " + departamentos);
+        request.setAttribute("departamentos", departamentos);
+        request.getRequestDispatcher("/listadoDepartamentos.jsp").forward(request, response);
+        
+    }
+    
 }

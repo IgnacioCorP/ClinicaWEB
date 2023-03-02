@@ -32,6 +32,7 @@ import javax.validation.constraints.Size;
 @Table(name = "laboratorio")
 @NamedQueries({
     @NamedQuery(name = "Laboratorio.findAll", query = "SELECT l FROM Laboratorio l"),
+    @NamedQuery(name = "Laboratorio.buscador", query = "SELECT l FROM Laboratorio l WHERE l.iDlab LIKE CONCAT('%' , :iDlab , '%') OR l.nombresede LIKE CONCAT('%' , :nombresede , '%') OR l.direccion LIKE CONCAT('%' , :direccion , '%') OR l.telefono LIKE CONCAT('%' , :telefono , '%')"),
     @NamedQuery(name = "Laboratorio.findByIDlab", query = "SELECT l FROM Laboratorio l WHERE l.iDlab = :iDlab"),
     @NamedQuery(name = "Laboratorio.findByNombresede", query = "SELECT l FROM Laboratorio l WHERE l.nombresede = :nombresede"),
     @NamedQuery(name = "Laboratorio.findByDireccion", query = "SELECT l FROM Laboratorio l WHERE l.direccion = :direccion"),
@@ -86,7 +87,6 @@ public class Laboratorio implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
     }
-    
 
     public Integer getIDlab() {
         return iDlab;
@@ -160,5 +160,5 @@ public class Laboratorio implements Serializable {
     public String toString() {
         return "Dominio.Laboratorio[ iDlab=" + iDlab + " ]";
     }
-    
+
 }

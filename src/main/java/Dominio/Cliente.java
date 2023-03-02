@@ -30,6 +30,7 @@ import javax.validation.constraints.Size;
 @Table(name = "cliente")
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
+    @NamedQuery(name = "Cliente.buscador", query = "SELECT c FROM Cliente c WHERE c.nif LIKE CONCAT('%' , :nif , '%') OR c.nombre LIKE CONCAT('%' , :nombre , '%') OR c.apellido LIKE CONCAT('%' , :apellido , '%')"),
     @NamedQuery(name = "Cliente.findByNif", query = "SELECT c FROM Cliente c WHERE c.nif = :nif"),
     @NamedQuery(name = "Cliente.findByNombre", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre"),
     @NamedQuery(name = "Cliente.findByApellido", query = "SELECT c FROM Cliente c WHERE c.apellido = :apellido"),

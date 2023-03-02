@@ -25,4 +25,6 @@ public interface LaboratorioInterfaz {
     public void updateLaboratorio(Laboratorio laboratorio);
 
     public void deleteLaboratorio(Laboratorio laboratorio);
+
+    public List<Laboratorio> buscadorLaboratorio(String bus);
 }

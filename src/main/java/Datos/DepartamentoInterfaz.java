@@ -22,8 +22,9 @@ public interface DepartamentoInterfaz {
 
     public void insertDepartamento(Departamento departamento);
 
-    public void updateDepartamento(Departamento departamento); 
+    public void updateDepartamento(Departamento departamento);
 
+    public List<Departamento> buscadorDepartamento(String bus);
 
-    public void deleteDepartamento(Departamento departamento); 
+    public void deleteDepartamento(Departamento departamento);
 }

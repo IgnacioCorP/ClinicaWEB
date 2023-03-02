@@ -127,7 +127,7 @@
                         <h4>REGISTRA DEPARTAMENTO</h4>
                         <input type="text" class="form-control"  name="Nombre" placeholder="Nombre">
 
-                        <input type="text" class="form-control"  name="Descripcion" placeholder="Direccion">
+                        <input type="text" class="form-control"  name="Descripcion" placeholder="Descripcion">
 
 
                         <button class="btn btn-outline-success Hadow rounded border" type="submit">REGISTRAR</button>

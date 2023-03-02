@@ -41,7 +41,7 @@ public class ClienteDao implements ClienteInterfaz {
         // que queremos buscar
         return em.find(Cliente.class, cliente.getNif());
     }
-    
+
     @Override
     public Cliente loginCliente(String email, String password) {
         Query query = em.createQuery("from Cliente c where c.Email = :Email and c.Clave = :Clave");
@@ -104,4 +104,14 @@ public class ClienteDao implements ClienteInterfaz {
         // 1. actualizamos el estado del objeto en la base de datos => se borra.
         em.remove(em.merge(cliente));
     }
+
+   @Override
+    public List<Cliente> buscadorCliente(String bus) {
+        Query query = em.createNamedQuery("Cliente.buscador");
+        query.setParameter("nif", bus);
+        query.setParameter("nombre", bus);
+        query.setParameter("apellido", bus);
+        return query.getResultList();
+    }
+    
 }

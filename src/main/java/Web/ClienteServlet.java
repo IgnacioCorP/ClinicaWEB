@@ -46,6 +46,9 @@ public class ClienteServlet extends HttpServlet {
                 case "eliminar":
                     this.EliminarCliente(request, response);
                     break;
+                case "buscar":
+                    this.buscarCliente(request, response);
+                    break;
                 case "Login":
                     String email = request.getParameter("Email");
                     String contrasena = request.getParameter("Clave");
@@ -226,6 +229,16 @@ public class ClienteServlet extends HttpServlet {
         // 4. Redirigimos y propagamos
         request.getRequestDispatcher(jspeditar).forward(request, response);
 
+    }
+    
+     private void buscarCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String bus = request.getParameter("bus");
+        List<Cliente> clientes = clienteNegocioInterfaz.buscadorCliente(bus);
+        System.out.println("clientes: " + clientes);
+        request.setAttribute("clientes", clientes);
+        request.getRequestDispatcher("/listadoClientes.jsp").forward(request, response);
+        
     }
 
 }

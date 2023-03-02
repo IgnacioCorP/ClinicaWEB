@@ -5,6 +5,7 @@
  */
 package Datos;
 
+import Dominio.Departamento;
 import Dominio.Laboratorio;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -69,5 +70,15 @@ public class LaboratorioDao implements LaboratorioInterfaz{
     public void deleteLaboratorio(Laboratorio laboratorio) {
         // 1. actualizamos el estado del objeto en la base de datos => se borra.
         em.remove(em.merge(laboratorio));
+    }
+    
+     @Override
+    public List<Laboratorio> buscadorLaboratorio(String bus) {
+        Query query = em.createNamedQuery("Laboratorio.buscador");
+        query.setParameter("iDlab", bus);
+        query.setParameter("nombresede", bus);
+        query.setParameter("direccion", bus);
+        query.setParameter("telefono", bus);
+        return query.getResultList();
     }
 }

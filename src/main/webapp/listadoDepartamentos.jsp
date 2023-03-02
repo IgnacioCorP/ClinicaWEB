@@ -8,6 +8,44 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="stylesheet" href="lb/css/bootstrap.min.css">
         <link rel="stylesheet" href="lb/fontawesome-free-6.2.0-web/css/all.min.css">
+        <style>
+            .searchbar {
+                margin-bottom: auto;
+                margin-top: auto;
+                height: 60px;
+                background-color: #353b48;
+                border-radius: 30px;
+                padding: 10px;
+            }
+            .search_input {
+                color: white;
+                border: 0;
+                outline: 0;
+                background: none;
+                width: 0;
+                caret-color: transparent;
+                line-height: 40px;
+                padding: 0 10px;
+                width: 450px;
+                caret-color: red;
+            }
+            .searchbar .search_icon:hover {
+                color: white;
+                background: #e74c3c;
+            }
+            .search_icon {
+                height: 40px;
+                width: 40px;
+                float: right;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                text-decoration: none;
+                background: white;
+                color: #e74c3c;
+            }
+        </style>
     </head>
     <body>
         <!--BARRA DE NAVEGACIÓN-->
@@ -53,38 +91,47 @@
             </nav>
         </div>
         <!--FIN BARRA DE NAVEGACIÓN -->
-        <div class="container-fluid col-sm-12 col-md-6">
-
-            <h1 style="justify-content: center; display: flex; color: blue; padding-top: 100px">DEPARTAMENTOS</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-
-                        <th scope="col">ID</th>
-                        <th scope="col">NOMBRE</th>
-                        <th scope="col">DESCRIPCIÓN</th>
-                        <th scope="col">ELIMINAR</th>
-
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${departamentos}" var="departamento" >
-                        <tr>
-                            
-                            <td>${departamento.getIDdep()}</td>
-                            <td>${departamento.getNombre()}</td>
-                            <td>${departamento.getDescripcion()}</td>
-                            <td ><a class="text-dark" href="Eliminar?eliminar=${departamento.getIDdep()}"><i class="fa-solid fa-trash"></i></a></td>
-
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+        <div class="container h-100 py-4">
+            <div class="d-flex justify-content-center h-100">
+                <div class="searchbar ">
+                    <form method="post" action="Departamento?accion=buscar">
+                        <input class="search_input " type="text" name="bus" placeholder="Buscar...">
+                        <button class="search_icon"><i class='fas fa-search'></i></button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <script src="lb/js/bootstrap.min.js"></script>
-    </body>
-    <!-- INICIO FOOTER -->
-    <jsp:include page="footer.jsp" />
-    <!-- FIN FOOTER -->
+
+    </div>
+    <div class="row  d-flex justify-content-center "
+         style="background-image: url('imgP/fondoindex.jpg'); background-repeat: no-repeat;  background-size: 100% 100%;">
+
+        <div class="container-fluid col-sm-12 col-md-6" >
+            <h1 style="justify-content: center; display: flex; color: white; padding-top: 100px">DEPARTAMENTOS</h1>
+            <div class="card mb-3" style="max-width: 800px;">
+                <div class="row g-0">
+                    <c:forEach items="${departamentos}" var="departamento" >
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${departamento.getIDdep()}</h5>
+                                <p class="card-text">${departamento.getNombre()}</p>
+                                <p class="card-text"><small class="text-muted">${departamento.getDescripcion()}</small></p>
+                                <td ><a class="text-dark" href="Eliminar?eliminar=${departamento.getIDdep()}"><i class="fa-solid fa-trash"></i></a></td>
+                                <td ><a class="text-dark" href="Eliminar?editar=${departamento.getIDdep()}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="imgP/oficina.png" style="width: 400px; height: 150px " class="img-fluid rounded-start" alt="...">
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <script src="lb/js/bootstrap.min.js"></script>
+</body>
+
 </html>

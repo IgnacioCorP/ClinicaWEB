@@ -50,4 +50,10 @@ public class LaboratorioService implements LaboratorioNegocioInterfaz {
     public void eliminarLaboratorio(Laboratorio laboratorio) {
         laboratorioInterfaz.deleteLaboratorio(laboratorio);
     }
+    
+     @Override
+    public List<Laboratorio> buscadorLaboratorio(String bus) {
+        return laboratorioInterfaz.buscadorLaboratorio(bus);
+    }
+    
 }

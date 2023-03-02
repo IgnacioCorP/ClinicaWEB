@@ -33,7 +33,7 @@ public class LaboratorioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String accion = request.getParameter("accion");
         if (accion != null) {
             switch (accion) {
@@ -53,6 +53,9 @@ public class LaboratorioServlet extends HttpServlet {
                     request.getRequestDispatcher("/listadoLaboratorios.jsp").forward(request,
                             response);
                     break;
+                case "buscar":
+                    this.buscarLaboratorio(request, response);
+                    break;
                 default:
                     this.accionDefault(request, response);
             }
@@ -60,11 +63,11 @@ public class LaboratorioServlet extends HttpServlet {
             //this.accionDefault(request, response);
         }
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String accion = request.getParameter("accion");
         if (accion != null) {
             switch (accion) {
@@ -85,22 +88,22 @@ public class LaboratorioServlet extends HttpServlet {
             //this.accionDefault(request, response);
         }
     }
-
+    
     private void accionDefault(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         request.getRequestDispatcher("/Laboratorio?accion=listarLaboratorios").forward(request,
                 response);
         HttpSession sesion = request.getSession();
     }
-
+    
     protected void InsertarLaboratorio(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String Nombre_sede = request.getParameter("Nombre_sede");
         String Direccion = request.getParameter("Direccion");
         String Telefono = request.getParameter("Telefono");
-
+        
         Laboratorio laboratorio = new Laboratorio(Nombre_sede, Direccion, Telefono);
         laboratorioNegocioInterfaz.registrarLaboratorio(laboratorio);
         System.out.println("registrosModificados = " + laboratorio);
@@ -108,5 +111,15 @@ public class LaboratorioServlet extends HttpServlet {
         request.getRequestDispatcher("/Laboratorio?accion=listarLaboratorios").forward(request,
                 response);
     }
-
+    
+    private void buscarLaboratorio(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String bus = request.getParameter("bus");
+        List<Laboratorio> laboratorio = laboratorioNegocioInterfaz.buscadorLaboratorio(bus);
+        System.out.println("laboratorio: " + laboratorio);
+        request.setAttribute("laboratorio", laboratorio);
+        request.getRequestDispatcher("/listadoLaboratorios.jsp").forward(request, response);
+        
+    }
+    
 }

@@ -17,17 +17,16 @@ import javax.persistence.Query;
  * @author Alumno Mañana
  */
 @Stateless
-public class DepartamentoDao implements DepartamentoInterfaz{
+public class DepartamentoDao implements DepartamentoInterfaz {
+
     // El EJB se encarga de forma automática de hacer las transacciones.
     // Ahora inyectamos la unidad de persistencia a través del API de JPA
     // Simplemente tenemos que usar la anotación e indicar el nombre de nuestra
     // unidad de persistencia
-    @PersistenceContext(unitName="ClinicaWebPU")
+    @PersistenceContext(unitName = "ClinicaWebPU")
     EntityManager em;
-    
-    // Con este objeto de em ya podemos interactuar con nuestra BD
-    
 
+    // Con este objeto de em ya podemos interactuar con nuestra BD
     @Override
     public List<Departamento> findAllDepartamentos() {
         // Creamos un NamedQuery, y el listado lo leemos con getResultList
@@ -54,16 +53,25 @@ public class DepartamentoDao implements DepartamentoInterfaz{
     }
 
     @Override
+    public List<Departamento> buscadorDepartamento(String bus) {
+        Query query = em.createNamedQuery("Departamento.buscador");
+        query.setParameter("iDdep", bus);
+        query.setParameter("nombre", bus);
+        query.setParameter("descripcion", bus);
+        return query.getResultList();
+    }
+
+    @Override
     public void insertDepartamento(Departamento departamento) {
         em.persist(departamento);
     }
 
     @Override
-    public void updateDepartamento(Departamento departamento){
+    public void updateDepartamento(Departamento departamento) {
         // Sincroniza cualquier modificamos que hayamos hecho de la persona en la BD
         em.merge(departamento);
     }
-    
+
     @Override
     public void deleteDepartamento(Departamento departamento) {
         // 1. actualizamos el estado del objeto en la base de datos => se borra.

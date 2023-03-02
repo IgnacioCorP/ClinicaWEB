@@ -17,19 +17,19 @@ import javax.inject.Inject;
  */
 @Stateless
 public class DepartamentoService implements DepartamentoNegocioInterfaz {
-     @Inject    
+
+    @Inject
     private DepartamentoInterfaz departamentoInterfaz;
-    
+
     // Ahora nos apoyamos de la interfaz para completar los servicios
-    
     @Override
-    public List<Departamento> listarDepartamentos() {       
+    public List<Departamento> listarDepartamentos() {
         return departamentoInterfaz.findAllDepartamentos();
     }
 
     @Override
     public Departamento encontrarDepartamentoPorID(Departamento departamento) {
-         return departamentoInterfaz.findDepartamentoByID(departamento);
+        return departamentoInterfaz.findDepartamentoByID(departamento);
     }
 
     @Override
@@ -51,4 +51,10 @@ public class DepartamentoService implements DepartamentoNegocioInterfaz {
     public void eliminarDepartamento(Departamento departamento) {
         departamentoInterfaz.deleteDepartamento(departamento);
     }
+
+    @Override
+    public List<Departamento> buscadorDepartamento(String bus) {
+        return departamentoInterfaz.buscadorDepartamento(bus);
+    }
+    
 }

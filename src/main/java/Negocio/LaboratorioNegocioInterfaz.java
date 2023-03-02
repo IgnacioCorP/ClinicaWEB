@@ -27,4 +27,6 @@ public interface LaboratorioNegocioInterfaz {
     public void modificarLaboratorio(Laboratorio laboratorio);
 
     public void eliminarLaboratorio(Laboratorio laboratorio);
+    
+    public List<Laboratorio> buscadorLaboratorio(String bus);
 }

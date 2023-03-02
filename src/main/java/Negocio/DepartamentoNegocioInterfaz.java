@@ -27,4 +27,6 @@ public interface DepartamentoNegocioInterfaz {
     public void modificarDepartamento(Departamento departamento);
 
     public void eliminarDepartamento(Departamento departamento);
+
+    public List<Departamento> buscadorDepartamento(String bus);
 }

@@ -66,4 +66,9 @@ public class ClienteService implements ClienteNegocioInterfaz {
     public void eliminarCliente(Cliente cliente) {
         clienteInterfaz.deleteCliente(cliente);
     }
+       
+    @Override
+    public List<Cliente> buscadorCliente(String bus){
+       return  clienteInterfaz.buscadorCliente(bus);
+    }
 }
