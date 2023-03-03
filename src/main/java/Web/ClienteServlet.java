@@ -67,7 +67,7 @@ public class ClienteServlet extends HttpServlet {
                             correoUsuario = usuariosLogin.get(i).getEmail();
                             sesion.setAttribute("Email", correoUsuario);
                             System.out.println(usuariosLogin.get(i));
-                            request.getRequestDispatcher("empleado.jsp").forward(request, response);
+                            request.getRequestDispatcher("cliente.jsp").forward(request, response);
                             return;
                         }
                     }
@@ -131,7 +131,7 @@ public class ClienteServlet extends HttpServlet {
                             correoUsuario = usuariosLogin.get(i).getEmail();
                             sesion.setAttribute("Email", correoUsuario);
                             System.out.println(usuariosLogin.get(i));
-                            response.sendRedirect("empleado.jsp");
+                            response.sendRedirect("cliente.jsp");
                             encontrado = true;
                             break;
                         }
@@ -198,7 +198,7 @@ public class ClienteServlet extends HttpServlet {
         clienteNegocioInterfaz.registrarCliente(cliente);
         System.out.println("registrosModificados = " + cliente);
         //4. Redirigimos a la acción por defecto
-        request.getRequestDispatcher("/empleado.jsp").forward(request,
+        request.getRequestDispatcher("/cliente.jsp").forward(request,
                 response);
     }
 

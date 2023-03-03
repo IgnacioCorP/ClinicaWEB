@@ -1,22 +1,15 @@
 <%-- 
-    Document   : productosempleado
-    Created on : 15-feb-2023, 10:54:52
+    Document   : productoscliente
+    Created on : 03-mar-2023, 12:57:29
     Author     : Alumno Mañana
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PRODUCTOS</title>
-        <link rel="stylesheet" href="lb/css/bootstrap.min.css">
-        <link rel="stylesheet" href="lb/fuente/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Seccion Cliente</title>
         <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
         <link rel="stylesheet" href="fonts/icomoon/style.css">
 
@@ -30,106 +23,38 @@
         <link rel="stylesheet" href="css/aos.css">
 
         <link rel="stylesheet" href="css/style.css">
-        <style>
-            html,
-            body {
-                position: relative;
-                height: 100%;
-            }
-
-            body {
-                background: #eee;
-                font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-                font-size: 14px;
-                color: #000;
-                margin: 0;
-                padding: 0;
-            }
-
-            .swiper {
-                width: 100%;
-                height: 100%;
-            }
-
-            .swiper-slide {
-                text-align: center;
-                font-size: 18px;
-                background: #fff;
-
-                /* Center slide text vertically */
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                -webkit-box-align: center;
-                -ms-flex-align: center;
-                -webkit-align-items: center;
-                align-items: center;
-            }
-
-            .swiper-slide img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        </style>
     </head>
-
     <body>
-        <!--BARRA DE NAVEGACIÓN-->
+
+
         <div class="container-fluid ">
             <nav class="navbar navbar-expand-lg navbar-light " style="background: transparent;">
                 <div class="container-fluid">
                     <!--ÍCONO APP-->
-                    <a class="navbar-brand" href="empleado.jsp"><img src="imgP/LOGO.png" class="img-fluid" style="width: 150px; height: 120px;"></a>
+                    <a class="navbar-brand" href="cliente.jsp"><img src="imgP/LOGO.png" class="img-fluid" style="width: 150px; height: 120px;"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="empleado.jsp">INICIO</a>
+                                <a class="nav-link" href="cliente.jsp">INICIO</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="productosempleado.jsp" id="navbarDropdown" role="button" aria-expanded="false">PRODUCTOS</a>
+                                <a class="nav-link" href="productoscliente.jsp" id="navbarDropdown" role="button" aria-expanded="false">PRODUCTOS</a>
 
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="Empleado?accion=listarEmpleados" id="navbarDropdown" role="button" aria-expanded="false">EMPLEADOS</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="Empleado?accion=listarClientes" id="navbarDropdown" role="button" aria-expanded="false">CLIENTES</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="Laboratorio?accion=listarLaboratorios" id="navbarDropdown" role="button" aria-expanded="false">LABORATORIOS</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="Departamento?accion=listarDepartamentos" id="navbarDropdown" role="button" aria-expanded="false">DEPARTAMENTOS</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="RegistrarProducto.jsp" id="navbarDropdown" role="button" aria-expanded="false">AÑADIR PRODUCTOS</a>
                             </li>
 
                         </ul>
-                        <div class="text-center">
-                            <a href="index.jsp" class="btn btn-primary">CERRAR SESIÓN</a>
-                        </div>
+
+
                     </div>
+                    <div class="text-center">
+                        <a href="index.jsp" class="btn btn-primary">CERRAR SESIÓN</a>
+                    </div>                          
                 </div>
             </nav>
         </div>
-
-        <script src="lb/js/bootstrap.min.js"></script>
-    </body>
-    <body>
-
-
-
         <div class="site-section">
             <div class="container">
 
@@ -157,71 +82,71 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Sale</span>
-                        <a href=""> <img src="images/product_01.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Bioderma</a></h3>
+                        <a href="compra.html"> <img src="images/product_01.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Bioderma</a></h3>
                         <p class="price"><del>95.00</del> &mdash; $55.00</p>
                     </div>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <a href=""> <img src="images/product_02.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Chanca Piedra</a></h3>
+                        <a href="compra.html"> <img src="images/product_02.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Chanca Piedra</a></h3>
                         <p class="price">$70.00</p>
                     </div>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <a href=""> <img src="images/product_03.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Umcka Cold Care</a></h3>
+                        <a href="compra.html"> <img src="images/product_03.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Umcka Cold Care</a></h3>
                         <p class="price">$120.00</p>
                     </div>
 
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
 
-                        <a href=""> <img src="images/product_04.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Cetyl Pure</a></h3>
+                        <a href="compra.html"> <img src="images/product_04.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Cetyl Pure</a></h3>
                         <p class="price"><del>45.00</del> &mdash; $20.00</p>
                     </div>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <a href=""> <img src="images/product_05.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">CLA Core</a></h3>
+                        <a href="compra.html"> <img src="images/product_05.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">CLA Core</a></h3>
                         <p class="price">$38.00</p>
                     </div>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Sale</span>
-                        <a href=""> <img src="images/product_06.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Poo Pourri</a></h3>
+                        <a href="compra.html"> <img src="images/product_06.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Poo Pourri</a></h3>
                         <p class="price"><del>$89</del> &mdash; $38.00</p>
                     </div>
 
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Sale</span>
-                        <a href=""> <img src="images/product_01.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Bioderma</a></h3>
+                        <a href="compra.html"> <img src="images/product_01.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Bioderma</a></h3>
                         <p class="price"><del>95.00</del> &mdash; $55.00</p>
                     </div>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <a href=""> <img src="images/product_02.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Chanca Piedra</a></h3>
+                        <a href="compra.html"> <img src="images/product_02.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Chanca Piedra</a></h3>
                         <p class="price">$70.00</p>
                     </div>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <a href=""> <img ˀsrc="images/product_03.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Umcka Cold Care</a></h3>
+                        <a href="compra.html"> <img ˀsrc="images/product_03.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Umcka Cold Care</a></h3>
                         <p class="price">$120.00</p>
                     </div>
 
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
 
-                        <a href=""> <img src="images/product_04.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Cetyl Pure</a></h3>
+                        <a href="compra.html"> <img src="images/product_04.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Cetyl Pure</a></h3>
                         <p class="price"><del>45.00</del> &mdash; $20.00</p>
                     </div>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <a href=""> <img src="images/product_05.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">CLA Core</a></h3>
+                        <a href="compra.html"> <img src="images/product_05.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">CLA Core</a></h3>
                         <p class="price">$38.00</p>
                     </div>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Sale</span>
-                        <a href=""> <img src="images/product_06.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="">Poo Pourri</a></h3>
+                        <a href="compra.html"> <img src="images/product_06.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Poo Pourri</a></h3>
                         <p class="price"><del>$89</del> &mdash; $38.00</p>
                     </div>
                 </div>
@@ -287,7 +212,7 @@
                         <div class="block-5 mb-5">
                             <h3 class="footer-heading mb-4">CONTACTO</h3>
                             <ul class="list-unstyled">
-                                <li class="address">CALLE ALCALÁ DE HENARES</li>
+                                <li class="address">CALLE ALACLA DE HENARES</li>
                                 <li class="phone"><a href="tel://23923929210">+34 607873151</a></li>
                                 <li class="email">KUANTUMPHARMA@MAIL.COM</li>
                             </ul>
@@ -323,6 +248,4 @@
     <script src="js/main.js"></script>
 
 </body>
-
-
 </html>

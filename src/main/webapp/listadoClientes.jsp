@@ -129,7 +129,5 @@
         </div>
         <script src="lb/js/bootstrap.min.js"></script>
     </body>
-    <!-- INICIO FOOTER -->
-    <jsp:include page="footer.jsp" />
-    <!-- FIN FOOTER -->
+  
 </html>
