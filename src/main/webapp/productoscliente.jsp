@@ -1,8 +1,9 @@
-<%-- 
-    Document   : productoscliente
-    Created on : 03-mar-2023, 12:57:29
-    Author     : Alumno Mañana
---%>
+
+
+<%@page import="java.util.Base64"%>
+<%@page import="Dominio.Producto"%>
+<%@page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +13,9 @@
         <title>Seccion Cliente</title>
         <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
         <link rel="stylesheet" href="fonts/icomoon/style.css">
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="lb/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lb/fontawesome-free-6.2.0-web/css/all.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/magnific-popup.css">
         <link rel="stylesheet" href="css/jquery-ui.css">
@@ -23,6 +26,48 @@
         <link rel="stylesheet" href="css/aos.css">
 
         <link rel="stylesheet" href="css/style.css">
+        <style>
+            .item img {
+                width: 100%;
+                height: 250px; /* ajusta el valor a tu gusto */
+            }
+            .searchbar {
+                margin-bottom: auto;
+                margin-top: auto;
+                height: 60px;
+                background-color: #353b48;
+                border-radius: 30px;
+                padding: 10px;
+            }
+            .search_input {
+                color: white;
+                border: 0;
+                outline: 0;
+                background: none;
+                width: 0;
+                caret-color: transparent;
+                line-height: 40px;
+                padding: 0 10px;
+                width: 450px;
+                caret-color: red;
+            }
+            .searchbar .search_icon:hover {
+                color: white;
+                background: #e74c3c;
+            }
+            .search_icon {
+                height: 40px;
+                width: 40px;
+                float: right;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                text-decoration: none;
+                background: white;
+                color: #e74c3c;
+            }
+        </style>
     </head>
     <body>
 
@@ -55,6 +100,16 @@
                 </div>
             </nav>
         </div>
+        <div class="container h-100 py-4">
+            <div class="d-flex justify-content-center h-100">
+                <div class="searchbar ">
+                    <form method="post" action="Productos?accion=buscar">
+                        <input class="search_input " type="text" name="bus" placeholder="Buscar...">
+                        <button class="search_icon"><i class='fas fa-search'></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="site-section">
             <div class="container">
 
@@ -69,8 +124,8 @@
                         <button type="button" class="btn btn-secondary btn-md dropdown-toggle px-4" id="dropdownMenuReference"
                                 data-toggle="dropdown">Reference</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                            <a class="dropdown-item" href="#">Relevance</a>
-                            <a class="dropdown-item" href="#">Name, A to Z</a>
+                            <a class="dropdown-item" href="#">Relevance</a>             
+                            <a class="dropdown-item" href="Productos?accion=AZ">Name, A to Z</a>
                             <a class="dropdown-item" href="#">Name, Z to A</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Price, low to high</a>
@@ -80,17 +135,14 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <span class="tag">Sale</span>
-                        <a href="compra.html"> <img src="images/product_01.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="compra.html">Bioderma</a></h3>
-                        <p class="price"><del>95.00</del> &mdash; $55.00</p>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <a href="compra.html"> <img src="images/product_02.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="compra.html">Chanca Piedra</a></h3>
-                        <p class="price">$70.00</p>
-                    </div>
+
+                    <c:forEach var="producto" items="${productos}">
+                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                            <a href="compra.html"> <img src="data:image/jpeg;base64,${producto.imagenBase64}" alt="${producto.nombre}"></a>
+                            <h3 class="text-dark"><a href="compra.html">${producto.nombre}</a></h3>
+                            <p class="price">${producto.precio}</p>
+                        </div>
+                    </c:forEach>
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <a href="compra.html"> <img src="images/product_03.png" alt="Image"></a>
                         <h3 class="text-dark"><a href="compra.html">Umcka Cold Care</a></h3>
@@ -125,11 +177,6 @@
                         <a href="compra.html"> <img src="images/product_02.png" alt="Image"></a>
                         <h3 class="text-dark"><a href="compra.html">Chanca Piedra</a></h3>
                         <p class="price">$70.00</p>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                        <a href="compra.html"> <img ˀsrc="images/product_03.png" alt="Image"></a>
-                        <h3 class="text-dark"><a href="compra.html">Umcka Cold Care</a></h3>
-                        <p class="price">$120.00</p>
                     </div>
 
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
@@ -246,6 +293,6 @@
     <script src="js/aos.js"></script>
 
     <script src="js/main.js"></script>
-
+    <script src="lb/js/bootstrap.min.js"></script>
 </body>
 </html>

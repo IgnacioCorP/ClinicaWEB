@@ -11,26 +11,24 @@
     </head>
     <body>
         <h1>Listado de Productos</h1>
-        <table>
+        <table class="row">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Imagen</th>
+                    <th class="col-sm-4">Nombre</th>
+                    <th class="col-sm-4">Precio</th>
+                    <th class="col-sm-4">Imagen</th>
                 </tr>
             </thead>
             <tbody>
-            <a href="ProductosServlet?accion=listarProductos">Listar productos</a>
+                <c:forEach var="producto" items="${productos}">
+                    <tr class="col-sm-6 col-lg-4 text-center item mb-4">
+                        <td><span class="tag">${producto.nombre}</span></td>
+                        <td>${producto.precio}</td>
+                        <td><img src="data:image/jpeg;base64,${producto.imagenBase64}" alt="${producto.nombre}"></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
 
-            <% for (Producto producto : (List<Producto>) request.getAttribute("producto")) {%>
-            <tr>
-                <td><%= producto.getNombre()%></td>
-                <td><%= producto.getPrecio()%></td>
-                <td><img src="C:\Users\Alumno Mañana\Documents\NetBeansProjects\ClinicaWeb\src\main\webapp\imgP;base64,<%= new String(Base64.getEncoder().encode(producto.getImgP()))%>"></td>
-            </tr>
-            <% }%>
-        </tbody>
-    </table>
-
-</body>
+    </body>
 </html>

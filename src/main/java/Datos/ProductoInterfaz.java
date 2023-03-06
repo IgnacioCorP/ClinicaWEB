@@ -13,10 +13,20 @@ import java.util.List;
  * @author Alumno Mañana
  */
 public interface ProductoInterfaz {
+
     public List<Producto> findAllProductos();
+
     public Producto findProductoByID(Producto producto);
+
     public Producto findProductoByNombre(Producto producto);
+
     public void insertProducto(Producto producto);
+
     public void updateProducto(Producto producto);
+
     public void deleteProducto(Producto producto);
+
+    public List<Producto> buscadorProducto(String bus);
+
+    public List<Producto> FiltroAZ(String bus);
 }

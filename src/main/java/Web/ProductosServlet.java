@@ -59,6 +59,12 @@ public class ProductosServlet extends HttpServlet {
                 case "listarProductos":
                     this.ListarProductos(request, response);
                     break;
+                case "buscar":
+                    this.buscarProducto(request, response);
+                    break;
+                case "AZ":
+                    this.FiltroAZ(request, response);
+                    break;
                 default:
                     this.accionDefault(request, response);
             }
@@ -88,6 +94,12 @@ public class ProductosServlet extends HttpServlet {
                 case "listarProductos":
                     this.ListarProductos(request, response);
 
+                    break;
+                case "buscar":
+                    this.buscarProducto(request, response);
+                    break;
+                case "AZ":
+                    this.FiltroAZ(request, response);
                     break;
 
                 default:
@@ -121,7 +133,7 @@ public class ProductosServlet extends HttpServlet {
         // Llamar al método insertarProducto del componente EJB
         productoNegocioInterfaz.registrarProducto(producto);
         // Redirigir al usuario a la página de lista de productos
-        request.getRequestDispatcher("productosempleado.jsp").forward(request, response);
+        request.getRequestDispatcher("/RegistrarProducto.jsp").forward(request, response);
     }
 
     private void ListarProductos(HttpServletRequest request, HttpServletResponse response)
@@ -130,7 +142,26 @@ public class ProductosServlet extends HttpServlet {
         List<Producto> productos = productoNegocioInterfaz.listarProductos();
         System.out.println("productos: " + productos);
         request.setAttribute("productos", productos);
-        request.getRequestDispatcher("productosempleado.jsp").forward(request, response);
+        request.getRequestDispatcher("productoscliente.jsp").forward(request, response);
     }
 
+    private void buscarProducto(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String bus = request.getParameter("bus");
+        List<Producto> producto = productoNegocioInterfaz.buscadorProducto(bus);
+        System.out.println("producto: " + producto);
+        request.setAttribute("producto", producto);
+        request.getRequestDispatcher("/productoscliente.jsp").forward(request, response);
+
+    }
+
+    private void FiltroAZ(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String bus = request.getParameter("bus");
+        List<Producto> producto = productoNegocioInterfaz.FiltroAZ(bus);
+        System.out.println("producto: " + producto);
+        request.setAttribute("producto", producto);
+        request.getRequestDispatcher("productoscliente.jsp").forward(request, response);
+
+    }
 }

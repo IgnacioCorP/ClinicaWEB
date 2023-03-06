@@ -2,10 +2,14 @@ package Web;
 
 import Datos.ClienteDao;
 import Dominio.Cliente;
+import Dominio.Compra;
+import Dominio.Producto;
 import Negocio.ClienteNegocioInterfaz;
+import Negocio.ProductoNegocioInterfaz;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -27,6 +31,9 @@ public class ClienteServlet extends HttpServlet {
     @Inject
     // Ahora definimos nuestra variable
     ClienteNegocioInterfaz clienteNegocioInterfaz; // Cremos una instancia de nuestra if local
+    @Inject
+
+    ProductoNegocioInterfaz productoNegocioInterfaz;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -230,15 +237,42 @@ public class ClienteServlet extends HttpServlet {
         request.getRequestDispatcher(jspeditar).forward(request, response);
 
     }
-    
-     private void buscarCliente(HttpServletRequest request, HttpServletResponse response)
+
+    private void buscarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String bus = request.getParameter("bus");
         List<Cliente> clientes = clienteNegocioInterfaz.buscadorCliente(bus);
         System.out.println("clientes: " + clientes);
         request.setAttribute("clientes", clientes);
         request.getRequestDispatcher("/listadoClientes.jsp").forward(request, response);
-        
+
+    }
+
+    private void comprarProducto(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        int idProducto = Integer.parseInt(request.getParameter("iDpro"));
+        Producto producto = productoNegocioInterfaz.encontrarProductoPorID(new Producto(idProducto));
+
+        Cliente cliente = (Cliente) session.getAttribute("cliente");
+        Date fecha = new Date();
+
+        Compra compra = new Compra(fecha, cliente, producto);
+
+        List<Compra> listaCompras = (List<Compra>) session.getAttribute("compra");
+        if (listaCompras == null) {
+            listaCompras = new ArrayList<>();
+        }
+
+        if (listaCompras.size() < 5) {
+            listaCompras.add(compra);
+        } else {
+            String mensaje = "No puedes alquilar más de 5 productos";
+            request.setAttribute("mensaje", mensaje);
+        }
+
+        session.setAttribute("compra", listaCompras);
+        response.sendRedirect(request.getContextPath() + "/Libro?accion=default");
     }
 
 }

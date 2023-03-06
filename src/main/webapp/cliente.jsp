@@ -54,7 +54,7 @@
                                     <a class="nav-link" href="cliente.jsp">INICIO</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="productoscliente.jsp" id="navbarDropdown" role="button" aria-expanded="false">PRODUCTOS</a>
+                                    <a class="nav-link" href="Productos?accion=listarProductos" id="navbarDropdown" role="button" aria-expanded="false">PRODUCTOS</a>
 
                                 </li>
 
@@ -82,7 +82,7 @@
                                 <h2 class="sub-title">MEDICINA BASADA EN LA EVIDENCIA</h2>
                                 <h1>BIENVENIDO A KUANTUM PHARMA</h1>
                                 <p>
-                                    <a href="productoscliente.jsp" class="btn btn-primary px-5 py-3">COMPRAR AHORA</a>
+                                    <a href="Productos?accion=listarProductos" class="btn btn-primary px-5 py-3">COMPRAR AHORA</a>
                                 </p>
                             </div>
                         </div>

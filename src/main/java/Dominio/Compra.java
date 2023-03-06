@@ -55,6 +55,13 @@ public class Compra implements Serializable {
         this.compraPK = new CompraPK(productoIDpro, clienteNif);
     }
 
+    public Compra(Date fecha, Cliente cliente, Producto producto) {
+        this.fecha = fecha;
+        this.cliente = cliente;
+        this.producto = producto;
+    }
+    
+
     public CompraPK getCompraPK() {
         return compraPK;
     }

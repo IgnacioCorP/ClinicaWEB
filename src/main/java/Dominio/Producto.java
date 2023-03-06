@@ -6,6 +6,7 @@
 package Dominio;
 
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -32,7 +33,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "producto")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Producto.buscador", query = "SELECT p FROM Producto p WHERE p.iDpro LIKE CONCAT('%' , :iDpro , '%') OR p.nombre LIKE CONCAT('%' , :nombre , '%') OR  p.precio LIKE CONCAT('%' , :precio , '%')"),
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
+    @NamedQuery(name = "Producto.filtroAZ", query = "SELECT p FROM Producto p ORDER BY p.nombre ASC"),
+    @NamedQuery(name = "Producto.filtroZA", query = "SELECT p FROM Producto p ORDER BY p.nombre DESC"),
     @NamedQuery(name = "Producto.findByIDpro", query = "SELECT p FROM Producto p WHERE p.iDpro = :iDpro"),
     @NamedQuery(name = "Producto.findByNombre", query = "SELECT p FROM Producto p WHERE p.nombre = :nombre"),
     @NamedQuery(name = "Producto.findByPrecio", query = "SELECT p FROM Producto p WHERE p.precio = :precio"),
@@ -62,10 +66,10 @@ public class Producto implements Serializable {
     @Lob
     @Column(name = "imgP")
     private byte[] imgP;
-    
-    @Transient 
+
+    @Transient
     private String base64;
-    
+
     public Producto() {
     }
 
@@ -86,14 +90,16 @@ public class Producto implements Serializable {
         this.imgP = imgP;
     }
 
+    public String getImagenBase64() {
+        return Base64.getEncoder().encodeToString(imgP);
+    }
+
     public Producto(String nombre, double precio, String base64) {
         this.nombre = nombre;
         this.precio = precio;
         this.base64 = base64;
     }
-    
 
-    
     public Integer getIDpro() {
         return iDpro;
     }
@@ -158,5 +164,5 @@ public class Producto implements Serializable {
     public String toString() {
         return "Dominio.Producto[ iDpro=" + iDpro + " ]";
     }
-    
+
 }

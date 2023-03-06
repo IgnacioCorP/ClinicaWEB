@@ -27,4 +27,8 @@ public interface ProductoNegocioInterfaz {
     public void modificarProducto(Producto producto);
 
     public void eliminarProducto(Producto producto);
+
+    public List<Producto> buscadorProducto(String bus);
+
+    public List<Producto> FiltroAZ(String bus);
 }

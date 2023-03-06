@@ -17,18 +17,19 @@ import javax.inject.Inject;
  */
 @Stateless
 public class ProductoService implements ProductoNegocioInterfaz {
-     @Inject    
+
+    @Inject
     private ProductoInterfaz productoInterfaz;
-   
+
     // Ahora nos apoyamos de la interfaz para completar los servicios
     @Override
-    public List<Producto> listarProductos() {       
+    public List<Producto> listarProductos() {
         return productoInterfaz.findAllProductos();
     }
 
     @Override
     public Producto encontrarProductoPorID(Producto producto) {
-         return productoInterfaz.findProductoByID(producto);
+        return productoInterfaz.findProductoByID(producto);
     }
 
     @Override
@@ -49,5 +50,15 @@ public class ProductoService implements ProductoNegocioInterfaz {
     @Override
     public void eliminarProducto(Producto producto) {
         productoInterfaz.deleteProducto(producto);
+    }
+
+    @Override
+    public List<Producto> buscadorProducto(String bus) {
+        return productoInterfaz.buscadorProducto(bus);
+    }
+    
+    @Override
+    public List<Producto> FiltroAZ(String bus) {
+        return productoInterfaz.FiltroAZ(bus);
     }
 }

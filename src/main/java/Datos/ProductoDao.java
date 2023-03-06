@@ -56,8 +56,6 @@ public class ProductoDao implements ProductoInterfaz {
         return (Producto) query.getSingleResult();
     }
 
-    
-
     @Override
     public void insertProducto(Producto producto) {
         em.persist(producto);
@@ -73,5 +71,21 @@ public class ProductoDao implements ProductoInterfaz {
     public void deleteProducto(Producto producto) {
         // 1. actualizamos el estado del objeto en la base de datos => se borra.
         em.remove(em.merge(producto));
+    }
+
+    @Override
+    public List<Producto> buscadorProducto(String bus) {
+        Query query = em.createNamedQuery("Producto.buscador");
+        query.setParameter("iDpro", bus);
+        query.setParameter("nombre", bus);
+        query.setParameter("precio", bus);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Producto> FiltroAZ(String bus) {
+        Query query = em.createNamedQuery("Producto.filtroAZ");
+        query.setParameter("nombre", bus);
+        return query.getResultList();
     }
 }
