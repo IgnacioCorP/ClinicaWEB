@@ -10,6 +10,13 @@
        msj = (String)request.getAttribute("mensajeError");
     }
 %> 
+<%
+    String user = "";
+    HttpSession sesion = request.getSession();
+    if (sesion.getAttribute("Email") != null) {
+        user = (String) sesion.getAttribute("Email");
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : REGISTRO
-    Created on : 01-feb-2023, 13:30:39
-    Author     : Alumno Mañana
---%>
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

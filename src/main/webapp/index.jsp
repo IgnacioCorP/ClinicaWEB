@@ -15,7 +15,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>KUANTUM</title>
         <link rel="stylesheet" href="lb/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+        <link rel="stylesheet" href="fonts/icomoon/style.css">
 
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+
+        <link rel="stylesheet" href="css/aos.css">
+
+        <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body>
@@ -51,12 +63,12 @@
                                    aria-expanded="false">PRODUCTOS</a>
 
                             </li>                         
-                             <li class="nav-item ">
+                            <li class="nav-item ">
                                 <a class="nav-link" href="LoginAdmin.jsp" id="navbarDropdown" role="button"
                                    aria-expanded="false">EMPLEADOS</a>
 
                             </li>
-                            
+
 
 
 
@@ -68,21 +80,172 @@
         </div>
         <!--FIN BARRA DE NAVEGACIÓN -->
 
-        <div class="row  d-flex justify-content-center "
-             style="background-image: url('imgP/fondoindex.jpg'); background-repeat: no-repeat;  background-size: 100% 100%; padding-top: 100px; padding-bottom: 100px; font-size: 40px; height: 790px;">
-            <div class="col sm-12 col-md-4">
-                <div class="container text-center">
-                    <h1 style="color: white; text-shadow: 2px 2px 2px black;">BIENVENIDO A KUANTUM PHARMA!</h1>
-                    <p style="color: white; text-shadow: 2px 2px 2px black; font-size: 20px;">MEDICINA BASADA EN LA EVIDENCIA</p>
-                    <p style="color: white; text-shadow: 2px 2px 2px black; font-size: 20px;">Somos KUANTUM PHARMA un laboratorio
-                        especializado en el desarrollo y la fabricación de
-                        medicamentos producidos a partir de componentes
-                        de origen natural y biológico.
+        <div class="site-blocks-cover" style="background-image: url('images/hero_1.jpg');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+                        <div class="site-block-cover-content text-center">
+                            <h2 class="sub-title">MEDICINA BASADA EN LA EVIDENCIA</h2>
+                            <h1>BIENVENIDO A KUANTUM PHARMA</h1>
+                            <p>
+                                <a href="IniciarSesion.jsp" class="btn btn-primary px-5 py-3">COMPRAR AHORA</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    </p>
+        <div class="site-section">
+            <div class="container">
+                <div class="row align-items-stretch section-overlap">
+                    <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="banner-wrap bg-primary h-100">
+                            <a href="#" class="h-100">
+                                <h5>Envíos <br> Gratutios!!</h5>
+                                <p>
+                                    El amor es el amor
+                                    <strong>Muchas gracias, al dolor le seguirá la adipiscencia.</strong>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="banner-wrap h-100">
+                            <a href="#" class="h-100">
+                                <h5>Hasta 50% <br> en nuestros productos </h5>
 
-                    <div class="text-center">
-                        <a href="IniciarSesion.jsp" class="btn btn-primary">Empezar</a>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="banner-wrap bg-warning h-100">
+                            <a href="#" class="h-100">
+                                <h5>Paga <br> con tarjeta sin problemas</h5>
+
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="title-section text-center col-12">
+                        <h2 class="text-uppercase">PRODUCTOS</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                        <span class="tag">Sale</span>
+                        <a href=""> <img src="images/product_01.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="">Bioderma</a></h3>
+                        <p class="price"><del>95.00</del> &mdash; $55.00</p>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                        <a href=""> <img src="images/product_02.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="">Chanca Piedra</a></h3>
+                        <p class="price">$70.00</p>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                        <a href=""> <img src="images/product_03.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="">Umcka Cold Care</a></h3>
+                        <p class="price">$120.00</p>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+
+                        <a href=""> <img src="images/product_04.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="compra.html">Cetyl Pure</a></h3>
+                        <p class="price"><del>45.00</del> &mdash; $20.00</p>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                        <a href=""> <img src="images/product_05.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="">CLA Core</a></h3>
+                        <p class="price">$38.00</p>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                        <span class="tag">Sale</span>
+                        <a href=""> <img src="images/product_06.png" alt="Image"></a>
+                        <h3 class="text-dark"><a href="">Poo Pourri</a></h3>
+                        <p class="price"><del>$89</del> &mdash; $38.00</p>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <a href="IniciarSesion.jsp" class="btn btn-primary px-4 py-3">Ver todos los productos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="site-section bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="title-section text-center col-12">
+                        <h2 class="text-uppercase">ÚLTIMOS PRODUCTOS</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 block-3 products-wrap">
+                        <div class="nonloop-block-3 owl-carousel">
+
+                            <div class="text-center item mb-4">
+                                <a href=""> <img src="images/product_03.png" alt="Image"></a>
+                                <h3 class="text-dark"><a href="">Umcka Cold Care</a></h3>
+                                <p class="price">$120.00</p>
+                            </div>
+
+                            <div class="text-center item mb-4">
+                                <a href=""> <img src="images/product_01.png" alt="Image"></a>
+                                <h3 class="text-dark"><a href="">Umcka Cold Care</a></h3>
+                                <p class="price">$120.00</p>
+                            </div>
+
+                            <div class="text-center item mb-4">
+                                <a href=""> <img src="images/product_02.png" alt="Image"></a>
+                                <h3 class="text-dark"><a href="">Umcka Cold Care</a></h3>
+                                <p class="price">$120.00</p>
+                            </div>
+
+                            <div class="text-center item mb-4">
+                                <a href=""> <img src="images/product_04.png" alt="Image"></a>
+                                <h3 class="text-dark"><a href="">Umcka Cold Care</a></h3>
+                                <p class="price">$120.00</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="site-section bg-secondary bg-image" style="background-image: url('images/bg_2.jpg');">
+            <div class="container">
+                <div class="row align-items-stretch">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_1.jpg');">
+                            <div class="banner-1-inner align-self-center">
+                                <h2>KUANTUM PHARMA</h2>
+                                <p>Somos KUANTUM PHARMA un laboratorio especializado en el desarrollo y la fabricación de medicamentos producidos a partir de componentes de origen natural y biológico.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_2.jpg');">
+                            <div class="banner-1-inner ml-auto  align-self-center">
+                                <h2>Expertos en </h2>
+                                <p>el cuidado de la salud y el bienestar de nuestros pacientes, por eso nos respaldamos en nuestra amplia experiencia, desarrollo tecnológico y un equipo humano orientado a lograr la excelencia y calidad de nuestros productos.
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -90,58 +253,68 @@
 
 
 
-        <script src="lb/js/bootstrap.min.js"></script>
-    </body>
-    <!--INICIO FOOTER-->
-    <footer>
+    </div>
 
-        <div class="container-fluid fixed-bottom " style="background-color: #68b59e;">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid  ">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
 
-                    <div class="row collapse navbar-collapse d-flex justify-content-around align-items-center"
-                         id="navbarSupportedContent">
+    <script src="js/main.js"></script>
+</body>
+<!--INICIO FOOTER-->
+<footer>
 
-                        <div class="col-sm-12 col-md-4 d-flex justify-content-around "
-                             style="color: white; text-align: center; padding-bottom: 10px; padding-top: 15px;">
-                            <span>© 2021. KUANTUM PHARMA. <a rel="nofollow" href="#"
-                                                             style="color: black;">Aviso Legal</a> | <a rel="nofollow"
-                                                             href="#" style="color: black;">Política
-                                    de Privacidad</a> |
-                                <a rel="nofollow" href="#"
-                                   style="color: black;">Política de
-                                    Cookies</a></span>
+    <div class="container-fluid fixed-bottom " style="background-color: #68b59e;">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid  ">
+
+                <div class="row collapse navbar-collapse d-flex justify-content-around align-items-center"
+                     id="navbarSupportedContent">
+
+                    <div class="col-sm-12 col-md-4 d-flex justify-content-around "
+                         style="color: white; text-align: center; padding-bottom: 10px; padding-top: 15px;">
+                        <span>© 2021. KUANTUM PHARMA. <a rel="nofollow" href="#"
+                                                         style="color: black;">Aviso Legal</a> | <a rel="nofollow"
+                                                         href="#" style="color: black;">Política
+                                de Privacidad</a> |
+                            <a rel="nofollow" href="#"
+                               style="color: black;">Política de
+                                Cookies</a></span>
+                    </div>
+                    <div class="col-sm-12 col-md-4 d-flex justify-content-around "
+                         style="padding-bottom: 10px; padding-top: 15px;">
+                        <div style="text-align: center;  color: aliceblue; padding-top: 4px; padding-left: 20px; ">
                         </div>
-                        <div class="col-sm-12 col-md-4 d-flex justify-content-around "
-                             style="padding-bottom: 10px; padding-top: 15px;">
-                            <div style="text-align: center;  color: aliceblue; padding-top: 4px; padding-left: 20px; ">
-                            </div>
-                            <div class="kingster-top-bar-right-social"><a
-                                    href="https://www.instagram.com/lab.kuantum/?hl=es" target="_blank"
-                                    class="kingster-top-bar-social-icon" rel="nofollow " title="instagram"><i
-                                        class="fa fa-instagram"></i> <img src="imgP/instagram.png" class="img-fluid"
-                                        style="width: 33px; height: 25px; padding-top: 3px; "></a>
-                            </div>
-                            <div class="kingster-top-bar-right-social"><a href="mailto:kuantumpharma@gmail.com"
-                                                                          target="_blank" class="kingster-top-bar-social-icon" rel="nofollow "
-                                                                          title="instagram"><i class="fa fa-correo"></i> <img src="imgP/correo.png"
-                                                                                    class="img-fluid" style="width: 47px; height: 30px; padding-top: 3px; "></a>
-                            </div>
-                            <div class="kingster-top-bar-right-social"><a href="https://wa.me/573156066815" target="_blank"
-                                                                          class="kingster-top-bar-social-icon" rel="nofollow " title="instagram"><i
-                                        class="fa fa-whatsapp"></i> <img src="imgP/wasap2.png" class="img-fluid"
-                                        style="width: 30px; height: 25px; padding-top: 3px; "></a>
-                            </div>
-
+                        <div class="kingster-top-bar-right-social"><a
+                                href="https://www.instagram.com/lab.kuantum/?hl=es" target="_blank"
+                                class="kingster-top-bar-social-icon" rel="nofollow " title="instagram"><i
+                                    class="fa fa-instagram"></i> <img src="imgP/instagram.png" class="img-fluid"
+                                    style="width: 33px; height: 25px; padding-top: 3px; "></a>
                         </div>
-
+                        <div class="kingster-top-bar-right-social"><a href="mailto:kuantumpharma@gmail.com"
+                                                                      target="_blank" class="kingster-top-bar-social-icon" rel="nofollow "
+                                                                      title="instagram"><i class="fa fa-correo"></i> <img src="imgP/correo.png"
+                                                                                class="img-fluid" style="width: 47px; height: 30px; padding-top: 3px; "></a>
+                        </div>
+                        <div class="kingster-top-bar-right-social"><a href="https://wa.me/573156066815" target="_blank"
+                                                                      class="kingster-top-bar-social-icon" rel="nofollow " title="instagram"><i
+                                    class="fa fa-whatsapp"></i> <img src="imgP/wasap2.png" class="img-fluid"
+                                    style="width: 30px; height: 25px; padding-top: 3px; "></a>
+                        </div>
 
                     </div>
-                </div>
-            </nav>
-        </div>
 
-    </footer>
-    <!--FIN FOOTER-->
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</footer>
+<!--FIN FOOTER-->
 
 </html>

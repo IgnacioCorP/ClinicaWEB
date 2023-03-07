@@ -132,11 +132,13 @@ public class ClienteServlet extends HttpServlet {
                     for (int i = 0; i < usuariosLogin.size(); i++) {
                         String correoUsuario = usuariosLogin.get(i).getEmail();
                         String contraUsuario = usuariosLogin.get(i).getClave();
+                        String Nifu = usuariosLogin.get(i).getNif();
 
                         if (correoUsuario.equals(email) && contraUsuario.equals(contrasena)) {
                             System.out.println("conectado");
                             correoUsuario = usuariosLogin.get(i).getEmail();
                             sesion.setAttribute("Email", correoUsuario);
+                            sesion.setAttribute("Nif", Nifu);
                             System.out.println(usuariosLogin.get(i));
                             response.sendRedirect("cliente.jsp");
                             encontrado = true;
@@ -195,6 +197,7 @@ public class ClienteServlet extends HttpServlet {
 
     protected void InsertarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
         String nif = request.getParameter("Nif");
         String nombre = request.getParameter("Nombre");
         String apellido = request.getParameter("Apellido");
@@ -205,6 +208,8 @@ public class ClienteServlet extends HttpServlet {
         clienteNegocioInterfaz.registrarCliente(cliente);
         System.out.println("registrosModificados = " + cliente);
         //4. Redirigimos a la acción por defecto
+
+        sesion.setAttribute("Email", email);
         request.getRequestDispatcher("/cliente.jsp").forward(request,
                 response);
     }
@@ -221,6 +226,7 @@ public class ClienteServlet extends HttpServlet {
 
     private void editarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
 
         // 1. Recuperamos los parámetros
         int Nif = Integer.parseInt(request.getParameter("Nif"));
@@ -240,6 +246,7 @@ public class ClienteServlet extends HttpServlet {
 
     private void buscarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
         String bus = request.getParameter("bus");
         List<Cliente> clientes = clienteNegocioInterfaz.buscadorCliente(bus);
         System.out.println("clientes: " + clientes);

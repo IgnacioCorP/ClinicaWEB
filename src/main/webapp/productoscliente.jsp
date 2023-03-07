@@ -1,5 +1,10 @@
-
-
+<%
+    String user = "";
+    HttpSession sesion = request.getSession();
+    if (sesion.getAttribute("Email") != null) {
+        user = (String) sesion.getAttribute("Email");
+    }
+%>
 <%@page import="java.util.Base64"%>
 <%@page import="Dominio.Producto"%>
 <%@page import="java.util.List"%>
@@ -136,7 +141,7 @@
 
                 <div class="row">
 
-                    <c:forEach var="producto" items="${productos}">
+                    <c:forEach  items="${productos}" var="producto">
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                             <a href="compra.html"> <img src="data:image/jpeg;base64,${producto.imagenBase64}" alt="${producto.nombre}"></a>
                             <h3 class="text-dark"><a href="compra.html">${producto.nombre}</a></h3>

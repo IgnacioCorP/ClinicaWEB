@@ -9,6 +9,11 @@
     if (sesion.getAttribute("Email") != null) {
         user = (String) sesion.getAttribute("Email");
     }
+    String user1 = "";
+    sesion = request.getSession();
+    if (sesion.getAttribute("Nif") != null) {
+        user = (String) sesion.getAttribute("Nif");
+    }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -65,11 +70,11 @@
                         <div class="text-center">
                             <a href="index.jsp" class="btn btn-primary">CERRAR SESIÓN</a>
                         </div>
-                        <div class="text-center">
-                            <a href="" class="btn btn-primary">MI CUENTA</a>
+                        <div class="text-center text-dark">
+                            <a  class="btn btn-primary">MI CUENTA</a>
                         </div>
 
-                        <a href="" class="btn btn-primary"> <%=user%></a>
+                        <a text-dark> <%=user%></a>
                     </div>
                 </nav>
             </div>

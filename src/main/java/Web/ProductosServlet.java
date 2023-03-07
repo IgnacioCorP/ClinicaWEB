@@ -26,6 +26,7 @@ import javax.servlet.http.Part;
 import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -133,7 +134,7 @@ public class ProductosServlet extends HttpServlet {
         // Llamar al método insertarProducto del componente EJB
         productoNegocioInterfaz.registrarProducto(producto);
         // Redirigir al usuario a la página de lista de productos
-        request.getRequestDispatcher("/RegistrarProducto.jsp").forward(request, response);
+        request.getRequestDispatcher("productosempleado.jsp").forward(request, response);
     }
 
     private void ListarProductos(HttpServletRequest request, HttpServletResponse response)
@@ -145,23 +146,27 @@ public class ProductosServlet extends HttpServlet {
         request.getRequestDispatcher("productoscliente.jsp").forward(request, response);
     }
 
-    private void buscarProducto(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    private void buscarProducto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
         String bus = request.getParameter("bus");
-        List<Producto> producto = productoNegocioInterfaz.buscadorProducto(bus);
+        List<Producto> producto = null;
+        if (productoNegocioInterfaz != null) {
+            producto = productoNegocioInterfaz.buscadorProducto(bus);
+        }
         System.out.println("producto: " + producto);
         request.setAttribute("producto", producto);
         request.getRequestDispatcher("/productoscliente.jsp").forward(request, response);
-
     }
 
-    private void FiltroAZ(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    private void FiltroAZ(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String bus = request.getParameter("bus");
-        List<Producto> producto = productoNegocioInterfaz.FiltroAZ(bus);
+        List<Producto> producto = null;
+        if (productoNegocioInterfaz != null) {
+            producto = productoNegocioInterfaz.FiltroAZ(bus);
+        }
         System.out.println("producto: " + producto);
         request.setAttribute("producto", producto);
         request.getRequestDispatcher("productoscliente.jsp").forward(request, response);
-
     }
+
 }
